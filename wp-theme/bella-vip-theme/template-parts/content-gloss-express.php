@@ -4,6 +4,22 @@
  *
  * @package Bella_VIP
  */
+
+$gloss_tag = get_field('gloss_tag') ?: 'Destaque';
+$gloss_title = get_field('gloss_title') ?: 'Gloss Express: uma alternativa leve para suavizar fios brancos';
+$gloss_desc = get_field('gloss_description') ?: 'Para quem deseja suavizar os fios brancos sem partir para uma coloração pesada, o Gloss Express ajuda a renovar o visual, trazer brilho e manter um resultado mais natural e iluminado.';
+$gloss_image = get_field('gloss_image') ?: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
+// Global WhatsApp
+$front_page_id = get_option( 'page_on_front' );
+$whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '5541999999999';
+$whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
+
+$fallback_bullets = array(
+    'Menos agressivo que tinturas convencionais',
+    'Proporciona brilho espelhado',
+    'Manutenção mais fácil e espaçada'
+);
 ?>
 
 <section id="gloss-express" class="py-20 bg-white">
@@ -15,30 +31,40 @@
         
         <div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div>
-            <span class="text-bella-terracotta font-bold tracking-wider uppercase text-sm mb-2 block">Destaque</span>
+            <span class="text-bella-terracotta font-bold tracking-wider uppercase text-sm mb-2 block"><?php echo esc_html($gloss_tag); ?></span>
             <h2 class="text-3xl md:text-4xl font-serif text-bella-text mb-6">
-                Gloss Express: uma alternativa leve para suavizar fios brancos
+                <?php echo esc_html($gloss_title); ?>
             </h2>
-            <p class="text-lg text-bella-subtext mb-8">
-                Para quem deseja suavizar os fios brancos sem partir para uma coloração pesada, o Gloss Express ajuda a renovar o visual, trazer brilho e manter um resultado mais natural e iluminado.
-            </p>
+            <div class="text-lg text-bella-subtext mb-8">
+                <?php echo wp_kses_post($gloss_desc); ?>
+            </div>
             
             <ul class="space-y-4 mb-8">
+                <?php 
+                if( have_rows('gloss_bullets') ): 
+                    while( have_rows('gloss_bullets') ) : the_row();
+                        $text = get_sub_field('text');
+                ?>
                 <li class="flex items-center text-bella-text">
                     <span class="w-1.5 h-1.5 bg-bella-terracotta rounded-full mr-3"></span>
-                    Menos agressivo que tinturas convencionais
+                    <?php echo esc_html($text); ?>
                 </li>
+                <?php 
+                    endwhile;
+                else :
+                    foreach($fallback_bullets as $bullet):
+                ?>
                 <li class="flex items-center text-bella-text">
                     <span class="w-1.5 h-1.5 bg-bella-terracotta rounded-full mr-3"></span>
-                    Proporciona brilho espelhado
+                    <?php echo esc_html($bullet); ?>
                 </li>
-                <li class="flex items-center text-bella-text">
-                    <span class="w-1.5 h-1.5 bg-bella-terracotta rounded-full mr-3"></span>
-                    Manutenção mais fácil e espaçada
-                </li>
+                <?php 
+                    endforeach;
+                endif; 
+                ?>
             </ul>
 
-            <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">
+            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">
                 Quero saber se serve para meu cabelo
             </a>
             </div>
@@ -46,8 +72,8 @@
             <div class="relative">
             <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-4 border-white">
                 <img 
-                src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Cabelo com muito brilho e movimento" 
+                src="<?php echo esc_url($gloss_image); ?>" 
+                alt="<?php echo esc_attr($gloss_title); ?>" 
                 class="w-full h-full object-cover"
                 loading="lazy"
                 />

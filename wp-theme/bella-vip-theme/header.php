@@ -11,6 +11,13 @@
 <body <?php body_class( 'bg-bella-white text-bella-text font-sans antialiased' ); ?>>
 <?php wp_body_open(); ?>
 
+<?php
+// Obter ID da página inicial para puxar o campo global
+$front_page_id = get_option( 'page_on_front' );
+$whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '5541999999999';
+$whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
+?>
+
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text sr-only" href="#primary"><?php esc_html_e( 'Skip to content', 'bellavip' ); ?></a>
 
@@ -32,7 +39,7 @@
           </nav>
 
           <div class="hidden md:flex">
-            <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" class="btn-primary py-2 px-5 text-sm">
+            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary py-2 px-5 text-sm">
               Agendar Atendimento
             </a>
           </div>
@@ -53,7 +60,7 @@
             <a href="#sobre" class="mobile-link block px-3 py-3 text-base font-medium text-bella-text hover:bg-bella-nude rounded-md">Sobre</a>
             <a href="#localizacao" class="mobile-link block px-3 py-3 text-base font-medium text-bella-text hover:bg-bella-nude rounded-md">Localização</a>
             <div class="mt-4 pt-4 border-t border-bella-nude">
-              <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" class="btn-primary w-full mt-2">
+              <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full mt-2">
                 Agendar pelo WhatsApp
               </a>
             </div>

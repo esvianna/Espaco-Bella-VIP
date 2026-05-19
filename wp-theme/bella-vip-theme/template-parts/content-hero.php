@@ -4,6 +4,16 @@
  *
  * @package Bella_VIP
  */
+
+$hero_tag = get_field('hero_tag') ?: 'Campo Comprido, Curitiba';
+$hero_title = get_field('hero_title') ?: 'Cabelo, beleza e <br /><span class="text-bella-terracotta italic">bem-estar</span>';
+$hero_desc = get_field('hero_description') ?: 'Atendimento feminino e personalizado para quem deseja cuidar dos cabelos, relaxar e realçar a autoestima em um ambiente acolhedor.';
+$hero_image = get_field('hero_image') ?: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
+// Global WhatsApp
+$front_page_id = get_option( 'page_on_front' );
+$whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '5541999999999';
+$whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
 ?>
 
 <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -17,18 +27,19 @@
         <!-- Text Content -->
         <div class="max-w-2xl">
             <span class="inline-block py-1 px-3 rounded-full bg-white text-bella-terracotta text-sm font-medium mb-6 shadow-sm border border-bella-rose/30">
-            Campo Comprido, Curitiba
+            <?php echo esc_html($hero_tag); ?>
             </span>
+            
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-bella-text leading-tight mb-6">
-            Cabelo, beleza e <br />
-            <span class="text-bella-terracotta italic">bem-estar</span>
+            <?php echo wp_kses_post($hero_title); ?>
             </h1>
+            
             <p class="text-lg md:text-xl text-bella-subtext mb-8 leading-relaxed max-w-lg">
-            Atendimento feminino e personalizado para quem deseja cuidar dos cabelos, relaxar e realçar a autoestima em um ambiente acolhedor.
+            <?php echo wp_kses_post($hero_desc); ?>
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4">
-            <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" class="btn-primary group">
+            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary group">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle mr-2 h-5 w-5 group-hover:scale-110 transition-transform"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                 Agendar pelo WhatsApp
             </a>
@@ -43,12 +54,13 @@
             <div class="absolute inset-0 bg-bella-terracotta rounded-t-full rounded-b-3xl transform rotate-3 scale-105 opacity-10 z-0"></div>
             <div class="relative rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl z-10 border-8 border-white">
             <img 
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="<?php esc_attr_e( 'Mulher sorrindo em salão de beleza', 'bellavip' ); ?>" 
+                src="<?php echo esc_url($hero_image); ?>" 
+                alt="<?php esc_attr_e( 'Ambiente Espaço Bella VIP', 'bellavip' ); ?>" 
                 class="w-full h-auto object-cover aspect-[4/5]"
                 loading="lazy"
             />
             </div>
+            
             <!-- Decorative element -->
             <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg z-20 flex items-center gap-3">
             <div class="flex -space-x-2">

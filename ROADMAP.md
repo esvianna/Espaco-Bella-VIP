@@ -13,8 +13,8 @@
 
 ## Fase 3: Migração para Produção (WordPress)
 - [x] Criar estrutura do Tema WordPress Customizado (Baseado no Protótipo).
-- [ ] Configurar ambiente WordPress e Ativar Tema.
-- [ ] Integrar campos dinâmicos via ACF para facilitar a edição pelo usuário.
+- [x] Configurar ambiente WordPress e Ativar Tema.
+- [x] Integrar campos dinâmicos via ACF para facilitar a edição pelo usuário.
 - [ ] Validar velocidade e carregamento da página final.
 
 ## Fase 4: Pós-Lançamento
