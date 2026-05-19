@@ -18,9 +18,19 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
         <div class="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
           
           <div>
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="font-serif text-2xl font-bold text-bella-text tracking-wide mb-4 inline-block">
-              <?php bloginfo( 'name' ); ?>
-            </a>
+            <?php
+            if ( has_custom_logo() ) {
+                $custom_logo_id = get_theme_mod( 'custom_logo' );
+                $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="mb-4 inline-block">';
+                echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="h-14 w-auto object-contain max-w-[200px]">';
+                echo '</a>';
+            } else {
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide mb-4 inline-block">';
+                bloginfo( 'name' );
+                echo '</a>';
+            }
+            ?>
             <p class="text-bella-subtext">
               Cuidado, beleza e bem-estar para mulheres no coração do Campo Comprido.
             </p>

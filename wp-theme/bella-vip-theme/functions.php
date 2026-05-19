@@ -20,6 +20,15 @@ function bellavip_setup() {
 	// Suporte a thumbnails
 	add_theme_support( 'post-thumbnails' );
 
+	// Suporte a logotipo customizado
+	add_theme_support( 'custom-logo', array(
+		'height'      => 80,
+		'width'       => 250,
+		'flex-height' => true,
+		'flex-width'  => true,
+		'header-text' => array( 'site-title', 'site-description' ),
+	) );
+
 	// Suporte a HTML5 nativo
 	add_theme_support(
 		'html5',

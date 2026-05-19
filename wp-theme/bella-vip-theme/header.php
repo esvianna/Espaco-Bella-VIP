@@ -25,10 +25,20 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
           
-          <div class="flex-shrink-0">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="font-serif text-2xl font-bold text-bella-text tracking-wide">
-              <?php bloginfo( 'name' ); ?>
-            </a>
+          <div class="flex-shrink-0 flex items-center">
+            <?php
+            if ( has_custom_logo() ) {
+                $custom_logo_id = get_theme_mod( 'custom_logo' );
+                $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">';
+                echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="h-12 w-auto object-contain max-w-[200px]">';
+                echo '</a>';
+            } else {
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide">';
+                bloginfo( 'name' );
+                echo '</a>';
+            }
+            ?>
           </div>
 
           <nav id="site-navigation" class="hidden md:flex space-x-8">
