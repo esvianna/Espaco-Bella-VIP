@@ -39,11 +39,11 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             </p>
             
             <div class="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-5">
-            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary group shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary py-3 px-8 group shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle mr-2 h-5 w-5 group-hover:scale-110 transition-transform"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                 Agendar pelo WhatsApp
             </a>
-            <a href="#servicos" class="btn-secondary hover:-translate-y-1 hover:bg-white transition-all duration-300">
+            <a href="#servicos" class="btn-secondary py-3 px-8 hover:-translate-y-1 hover:bg-white transition-all duration-300">
                 Conhecer serviços
             </a>
             </div>

@@ -100,7 +100,7 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
       </div>
 
       <!-- Mobile Menu (Full Screen Overlay Style) -->
-      <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[60] flex flex-col justify-center items-center opacity-0 invisible">
+      <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[60] flex flex-col justify-center items-center transition-opacity duration-300" style="opacity: 0; pointer-events: none;">
           
           <button id="mobile-menu-close" class="absolute top-6 right-6 text-bella-text hover:text-bella-terracotta focus:outline-none p-2" aria-label="Fechar Menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -143,13 +143,13 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
 
             // Mobile Menu Toggle
             function toggleMenu() {
-                if(mobileMenu.classList.contains('invisible')) {
-                    mobileMenu.classList.remove('invisible');
-                    mobileMenu.classList.replace('opacity-0', 'opacity-100');
+                if(mobileMenu.style.opacity === '0' || mobileMenu.style.opacity === '') {
+                    mobileMenu.style.opacity = '1';
+                    mobileMenu.style.pointerEvents = 'auto';
                     document.body.style.overflow = 'hidden'; // Prevent scrolling
                 } else {
-                    mobileMenu.classList.replace('opacity-100', 'opacity-0');
-                    setTimeout(() => mobileMenu.classList.add('invisible'), 300);
+                    mobileMenu.style.opacity = '0';
+                    mobileMenu.style.pointerEvents = 'none';
                     document.body.style.overflow = '';
                 }
             }
