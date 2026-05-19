@@ -5,7 +5,6 @@
  * @package Bella_VIP
  */
 
-<?php
 $whatsapp_number = get_theme_mod( 'bellavip_whatsapp_number', '5541999999999' );
 $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
 
