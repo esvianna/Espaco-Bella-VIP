@@ -58,7 +58,7 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
 	<a class="skip-link screen-reader-text sr-only" href="#primary"><?php esc_html_e( 'Skip to content', 'bellavip' ); ?></a>
 
     <!-- Header original sem background, ganha a classe glass-header via JS no scroll -->
-	<header id="masthead" class="fixed w-full z-50 transition-all duration-500 py-4 lg:py-6">
+	<header id="masthead" class="fixed w-full z-50 transition-all duration-500 py-4 lg:py-6" style="z-index: 50;">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
           
