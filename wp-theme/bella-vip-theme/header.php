@@ -78,11 +78,11 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             ?>
           </div>
 
-          <nav id="site-navigation" class="hidden md:flex space-x-10 items-center">
-            <a href="#servicos" class="text-sm font-medium text-bella-text hover:text-bella-terracotta relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-bella-terracotta after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Serviços</a>
-            <a href="#gloss-express" class="text-sm font-medium text-bella-text hover:text-bella-terracotta relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-bella-terracotta after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Gloss Express</a>
-            <a href="#sobre" class="text-sm font-medium text-bella-text hover:text-bella-terracotta relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-bella-terracotta after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Sobre</a>
-            <a href="#localizacao" class="text-sm font-medium text-bella-text hover:text-bella-terracotta relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-bella-terracotta after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Localização</a>
+          <nav id="site-navigation" class="hidden md:flex space-x-8 items-center">
+            <a href="#servicos" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Serviços</a>
+            <a href="#gloss-express" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Gloss Express</a>
+            <a href="#sobre" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Sobre</a>
+            <a href="#localizacao" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Localização</a>
           </nav>
 
           <div class="hidden md:flex">

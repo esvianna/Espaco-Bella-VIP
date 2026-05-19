@@ -30,7 +30,7 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             <?php echo esc_html($hero_tag); ?>
             </span>
             
-            <h1 class="animate-fade-in-up delay-100 text-5xl md:text-6xl lg:text-7xl font-serif text-bella-text leading-[1.1] mb-6">
+            <h1 class="animate-fade-in-up delay-100 text-4xl md:text-5xl lg:text-6xl font-serif text-bella-text leading-tight mb-6">
             <?php echo wp_kses_post($hero_title); ?>
             </h1>
             
@@ -51,8 +51,8 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
 
         <!-- Image with Entrance Animation -->
         <div class="relative mt-12 lg:mt-0 animate-fade-in-up delay-200">
-            <div class="absolute inset-0 bg-bella-terracotta rounded-t-[100px] rounded-b-[40px] transform rotate-3 scale-105 opacity-10 z-0"></div>
-            <div class="relative rounded-t-[100px] rounded-b-[40px] overflow-hidden shadow-2xl z-10 border-[10px] border-white transition-transform duration-700 hover:scale-[1.02]">
+            <div class="absolute inset-0 bg-bella-terracotta rounded-t-full rounded-b-3xl transform rotate-3 scale-105 opacity-10 z-0"></div>
+            <div class="relative rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl z-10 border-8 border-white transition-transform duration-700 hover:scale-[1.02]">
             <img 
                 src="<?php echo esc_url($hero_image); ?>" 
                 alt="<?php esc_attr_e( 'Ambiente Espaço Bella VIP', 'bellavip' ); ?>" 

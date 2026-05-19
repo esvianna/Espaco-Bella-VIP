@@ -30,13 +30,18 @@ $fallback_images = array(
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <?php 
-            if( $gallery_images ): 
+            if( $gallery_images && is_array($gallery_images) ): 
                 foreach( $gallery_images as $image ): 
+                    // ACF Image field can return ID, Object(array) or URL(string). Let's handle both array and string safely.
+                    $image_url = is_array($image) && isset($image['url']) ? $image['url'] : (is_string($image) ? $image : '');
+                    
+                    if($image_url):
             ?>
             <div class="aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="<?php echo esc_url($image); ?>" alt="Galeria Bella VIP" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <img src="<?php echo esc_url($image_url); ?>" alt="Galeria Bella VIP" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
             <?php 
+                    endif;
                 endforeach; 
             else : 
                 foreach( $fallback_images as $image ): 
