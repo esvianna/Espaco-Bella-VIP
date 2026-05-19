@@ -11,21 +11,24 @@ get_header();
 <main id="primary" class="site-main">
 
     <?php
-    // Carrega cada seção da Landing Page modularizada via template-parts
-    
-    get_template_part( 'template-parts/content', 'hero' );
-    
-    get_template_part( 'template-parts/content', 'about' );
-    
-    get_template_part( 'template-parts/content', 'services' );
-    
-    get_template_part( 'template-parts/content', 'gloss-express' );
-    
-    get_template_part( 'template-parts/content', 'gallery' );
-    
-    get_template_part( 'template-parts/content', 'testimonials' );
-    
-    get_template_part( 'template-parts/content', 'location' );
+    if ( have_posts() ) {
+        while ( have_posts() ) {
+            the_post();
+            
+            // Verifica se a página está vazia (sem blocos criados pelo usuário)
+            if ( empty( get_the_content() ) ) {
+                // Renderiza o Block Pattern de Hero como fallback (Graceful Degradation)
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/hero"} -->' );
+                
+                // Mensagem amigável para o administrador
+                if ( current_user_can( 'edit_posts' ) ) {
+                    echo '<div class="max-w-7xl mx-auto px-4 py-8 text-center"><p class="p-4 bg-yellow-50 text-yellow-800 rounded-md border border-yellow-200">' . esc_html__( 'Sua página inicial está vazia. Edite esta página usando o editor de blocos para adicionar conteúdo e remover este aviso.', 'bellavip' ) . '</p></div>';
+                }
+            } else {
+                the_content();
+            }
+        }
+    }
     ?>
 
 </main><!-- #main -->

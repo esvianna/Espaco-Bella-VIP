@@ -14,6 +14,9 @@ if ( ! defined( 'BELLA_VIP_VERSION' ) ) {
  * Configurações padrão e suporte do tema
  */
 function bellavip_setup() {
+	// Internacionalização (i18n)
+	load_theme_textdomain( 'bellavip', get_template_directory() . '/languages' );
+
 	// Suporte a tag title
 	add_theme_support( 'title-tag' );
 
@@ -69,3 +72,19 @@ function bellavip_scripts() {
     wp_enqueue_script( 'bellavip-main', get_template_directory_uri() . '/assets/js/main.js', array(), filemtime( get_template_directory() . '/assets/js/main.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'bellavip_scripts' );
+
+/**
+ * Customizer e Configurações do Tema
+ */
+require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Registra categoria de Padrões de Bloco
+ */
+function bellavip_register_pattern_categories() {
+	register_block_pattern_category(
+		'bellavip',
+		array( 'label' => esc_html__( 'Bella VIP', 'bellavip' ) )
+	);
+}
+add_action( 'init', 'bellavip_register_pattern_categories' );

@@ -56,7 +56,7 @@ get_header();
         ?>
         <section class="no-results not-found">
             <header class="page-header">
-                <h1 class="page-title text-3xl font-serif text-bella-text">Nenhum conteúdo encontrado.</h1>
+                <h1 class="page-title text-3xl font-serif text-bella-text"><?php esc_html_e( 'Nenhum conteúdo encontrado.', 'bellavip' ); ?></h1>
             </header>
         </section>
         <?php

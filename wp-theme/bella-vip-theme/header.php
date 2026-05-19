@@ -48,9 +48,7 @@
 <?php wp_body_open(); ?>
 
 <?php
-// Obter ID da página inicial para puxar o campo global
-$front_page_id = get_option( 'page_on_front' );
-$whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '5541999999999';
+$whatsapp_number = get_theme_mod( 'bellavip_whatsapp_number', '5541999999999' );
 $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
 ?>
 
@@ -79,15 +77,15 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
           </div>
 
           <nav id="site-navigation" class="hidden md:flex space-x-8 items-center">
-            <a href="#servicos" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Serviços</a>
-            <a href="#gloss-express" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Gloss Express</a>
-            <a href="#sobre" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Sobre</a>
-            <a href="#localizacao" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors">Localização</a>
+            <a href="#servicos" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Serviços', 'bellavip' ); ?></a>
+            <a href="#gloss-express" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Gloss Express', 'bellavip' ); ?></a>
+            <a href="#sobre" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Sobre', 'bellavip' ); ?></a>
+            <a href="#localizacao" class="text-sm font-medium text-bella-subtext hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Localização', 'bellavip' ); ?></a>
           </nav>
 
           <div class="hidden md:flex">
             <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary py-2.5 px-6 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-              Agendar Atendimento
+              <?php esc_html_e( 'Agendar Atendimento', 'bellavip' ); ?>
             </a>
           </div>
 
@@ -107,14 +105,14 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
           </button>
           
           <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 2rem; padding: 0 1.5rem;">
-            <a href="#servicos" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Serviços</a>
-            <a href="#gloss-express" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Gloss Express</a>
-            <a href="#sobre" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Sobre</a>
-            <a href="#localizacao" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Localização</a>
+            <a href="#servicos" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Serviços', 'bellavip' ); ?></a>
+            <a href="#gloss-express" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Gloss Express', 'bellavip' ); ?></a>
+            <a href="#sobre" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Sobre', 'bellavip' ); ?></a>
+            <a href="#localizacao" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors"><?php esc_html_e( 'Localização', 'bellavip' ); ?></a>
             
             <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(223, 192, 178, 0.3); width: 100%; max-width: 300px; display: flex; justify-content: center;">
               <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center py-4 text-lg" style="width: 100%; text-align: center;">
-                Agendar pelo WhatsApp
+                <?php esc_html_e( 'Agendar pelo WhatsApp', 'bellavip' ); ?>
               </a>
             </div>
           </div>

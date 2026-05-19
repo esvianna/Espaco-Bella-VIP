@@ -5,12 +5,12 @@
  * @package Bella_VIP
  */
 
-$front_page_id = get_option( 'page_on_front' );
-$whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '5541999999999';
+<?php
+$whatsapp_number = get_theme_mod( 'bellavip_whatsapp_number', '5541999999999' );
 $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
 
-// Pegar o endereço da página inicial para exibir no rodapé
-$address = get_field('location_address', $front_page_id) ?: 'R. Eduardo Sprada, 0000 - Campo Comprido<br>Curitiba - PR';
+// Pegar o endereço da página inicial para exibir no rodapé (Via Customizer agora)
+$address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Comprido<br>Curitiba - PR');
 ?>
 
 	<footer id="colophon" class="bg-bella-nude/50 pt-16 pb-8 border-t border-bella-rose/20 relative z-10">
@@ -32,12 +32,12 @@ $address = get_field('location_address', $front_page_id) ?: 'R. Eduardo Sprada, 
             }
             ?>
             <p class="text-bella-subtext">
-              Cuidado, beleza e bem-estar para mulheres no coração do Campo Comprido.
+              <?php esc_html_e( 'Cuidado, beleza e bem-estar para mulheres no coração do Campo Comprido.', 'bellavip' ); ?>
             </p>
           </div>
 
           <div>
-            <h4 class="font-serif text-lg text-bella-text mb-4">Contato</h4>
+            <h4 class="font-serif text-lg text-bella-text mb-4"><?php esc_html_e( 'Contato', 'bellavip' ); ?></h4>
             <p class="text-bella-subtext mb-2">WhatsApp: <?php echo esc_html( preg_replace('/^55/', '', $whatsapp_number) ); ?></p>
             <div class="text-bella-subtext mb-4">
                 <?php echo wp_kses_post( $address ); ?>
@@ -49,20 +49,20 @@ $address = get_field('location_address', $front_page_id) ?: 'R. Eduardo Sprada, 
           </div>
 
           <div>
-            <h4 class="font-serif text-lg text-bella-text mb-4">Pronta para cuidar de você?</h4>
+            <h4 class="font-serif text-lg text-bella-text mb-4"><?php esc_html_e( 'Pronta para cuidar de você?', 'bellavip' ); ?></h4>
             <p class="text-bella-subtext mb-4">
-              Fale conosco pelo WhatsApp e encontre o melhor horário para seu atendimento.
+              <?php esc_html_e( 'Fale conosco pelo WhatsApp e encontre o melhor horário para seu atendimento.', 'bellavip' ); ?>
             </p>
             <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full md:w-auto shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-              Agendar atendimento
+              <?php esc_html_e( 'Agendar atendimento', 'bellavip' ); ?>
             </a>
           </div>
 
         </div>
 
         <div class="pt-8 border-t border-bella-rose/20 text-center text-sm text-bella-subtext flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. Todos os direitos reservados.</p>
-          <p class="mt-2 md:mt-0">Desenvolvido com carinho para Campo Comprido.</p>
+          <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'Todos os direitos reservados.', 'bellavip' ); ?></p>
+          <p class="mt-2 md:mt-0"><?php esc_html_e( 'Desenvolvido com carinho para Campo Comprido.', 'bellavip' ); ?></p>
         </div>
       </div>
 	</footer><!-- #colophon -->
@@ -78,7 +78,7 @@ $address = get_field('location_address', $front_page_id) ?: 'R. Eduardo Sprada, 
         
         <!-- Tooltip que aparece após carregar e no hover -->
         <span class="absolute -top-12 right-0 bg-white text-bella-text text-sm py-2 px-4 rounded-xl shadow-lg border border-bella-nude whitespace-nowrap opacity-0 transition-opacity duration-500 group-hover:opacity-100 font-medium" id="whatsapp-tooltip">
-            Agende seu horário!
+            <?php esc_html_e( 'Agende seu horário!', 'bellavip' ); ?>
             <!-- Triângulo da tooltip -->
             <div class="absolute right-6 top-full" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid white;"></div>
         </span>

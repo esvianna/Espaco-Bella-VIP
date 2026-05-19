@@ -12,19 +12,19 @@
 - [x] Implementação dos componentes baseados no design system.
 - [x] Ajuste e correção de importação de ícones (`lucide-react`).
 - [x] Configuração de responsividade.
-- [x] **NOVO**: Criação da base estrutural do Tema WordPress (arquitetura MVC e SOLID) na pasta `wp-theme/bella-vip-theme/`, traduzindo os componentes React para PHP (`template-parts`).
+- [x] **NOVO**: Criação da base estrutural do Tema WordPress (arquitetura MVC e SOLID) na pasta `wp-theme/bella-vip-theme/`.
+- [x] **NOVO**: Refatoração do tema para os rigorosos padrões do **WordPress.org**, removendo a dependência do ACF e implementando integração com Customizer.
+- [x] **NOVO**: Conversão de 100% dos `template-parts` em **Padrões de Bloco (Block Patterns)** do Gutenberg, mantendo total integração com as classes do Tailwind v4.
+- [x] Compilar o CSS (`npm run build` no tema) para gerar o build do Tailwind contemplando a nova pasta `patterns/`.
 
 ## ⏳ O Que Está Pendente
 - Substituição das imagens de placeholder do Unsplash por fotos reais do espaço.
-- Atualização do link real do WhatsApp (atualmente `5541999999999`).
-- Substituição de textos de depoimentos fictícios por casos reais.
-- Inclusão do widget real do Google Maps no componente de Localização.
-- Tornar o conteúdo do Tema Dinâmico utilizando ACF (Advanced Custom Fields) ou blocos nativos.
+- Inclusão do widget real do Google Maps no componente de Localização via Bloco HTML.
 
 ## 👣 Próximos Passos Lógicos
-1. Validar a estética final do protótipo e do tema com o cliente.
-2. Instalar o tema no servidor WordPress destino.
-3. Configurar ACF (Advanced Custom Fields) para tornar as seções editáveis pelo painel.
+1. Entrar no painel do WordPress.
+2. Personalizar Cores e WhatsApp pelo **Aparência > Personalizar**.
+3. Editar a página inicial usando os **Padrões de Bloco** inseridos e substituir textos modelo pelos reais.
 
 ## ⚠️ Riscos ou Decisões Pendentes
 - **Risco de Performance:** Imagens futuras de alta resolução podem causar lentidão se não otimizadas em WebP antes do upload no WordPress.

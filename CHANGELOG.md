@@ -2,8 +2,14 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
-## [Unreleased]
-- Integração de imagens e links finais.
+## [1.1.0] - Tema WordPress 100% Nativo FSE / WP.org Standards - 2026-05-19
+### Changed
+- Refatoração profunda da arquitetura do tema Bella VIP.
+- Remoção total do plugin ACF e de seus usos em código hardcoded.
+- Adoção da Customizer API para cores (`bella-terracotta`, `bella-nude`) e informações globais (WhatsApp, Endereço).
+- Migração de todos os `template-parts` para **Padrões de Bloco (Block Patterns)** nativos do Gutenberg (`patterns/*.php`).
+- Aplicação estrita de `Text Domain` (`bellavip`) e internacionalização (i18n) em todo o código PHP.
+- `front-page.php` agora usa `the_content()` com Graceful Degradation (fallback para padrões se vazio).
 
 ## [1.0.0] - Prototipação - 2026-05-18
 ### Added
