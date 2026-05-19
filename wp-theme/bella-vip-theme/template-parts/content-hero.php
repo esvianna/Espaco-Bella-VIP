@@ -16,12 +16,12 @@ $whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '554
 $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
 ?>
 
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+<section class="relative pt-32 pb-20 overflow-hidden">
     <!-- Background with delicate gradient/pattern -->
     <div class="absolute inset-0 bg-bella-nude opacity-40 z-0"></div>
     <div class="absolute right-0 top-0 w-1/2 h-full bg-bella-rose opacity-10 rounded-l-full blur-3xl transform translate-x-1/3 -translate-y-1/4"></div>
     
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
         
         <!-- Text Content with Entrance Animations -->
