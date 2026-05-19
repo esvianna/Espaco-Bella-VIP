@@ -100,20 +100,20 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
       </div>
 
       <!-- Mobile Menu (Full Screen Overlay Style) -->
-      <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[60] flex flex-col justify-center items-center transition-opacity duration-300" style="opacity: 0; pointer-events: none;">
+      <div id="mobile-menu" class="transition-opacity duration-300" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.98); z-index: 100; opacity: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center;">
           
-          <button id="mobile-menu-close" class="absolute top-6 right-6 text-bella-text hover:text-bella-terracotta focus:outline-none p-2" aria-label="Fechar Menu">
+          <button id="mobile-menu-close" class="text-bella-text hover:text-bella-terracotta focus:outline-none p-2" aria-label="Fechar Menu" style="position: absolute; top: 1.5rem; right: 1.5rem; z-index: 110;">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
           
-          <div class="flex flex-col items-center space-y-8 w-full px-6">
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 2rem; padding: 0 1.5rem;">
             <a href="#servicos" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Serviços</a>
             <a href="#gloss-express" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Gloss Express</a>
             <a href="#sobre" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Sobre</a>
             <a href="#localizacao" class="mobile-link text-2xl font-serif text-bella-text hover:text-bella-terracotta transition-colors">Localização</a>
             
-            <div class="mt-8 pt-8 border-t border-bella-rose/30 w-full max-w-xs flex justify-center">
-              <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center py-4 text-lg">
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(223, 192, 178, 0.3); width: 100%; max-width: 300px; display: flex; justify-content: center;">
+              <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center py-4 text-lg" style="width: 100%; text-align: center;">
                 Agendar pelo WhatsApp
               </a>
             </div>
@@ -142,8 +142,11 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             });
 
             // Mobile Menu Toggle
-            function toggleMenu() {
-                if(mobileMenu.style.opacity === '0' || mobileMenu.style.opacity === '') {
+            let menuOpen = false;
+            function toggleMenu(e) {
+                if(e) e.preventDefault();
+                menuOpen = !menuOpen;
+                if(menuOpen) {
                     mobileMenu.style.opacity = '1';
                     mobileMenu.style.pointerEvents = 'auto';
                     document.body.style.overflow = 'hidden'; // Prevent scrolling
@@ -154,8 +157,8 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
                 }
             }
 
-            mobileBtn.addEventListener('click', toggleMenu);
-            mobileClose.addEventListener('click', toggleMenu);
+            if(mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
+            if(mobileClose) mobileClose.addEventListener('click', toggleMenu);
             
             mobileLinks.forEach(link => {
                 link.addEventListener('click', toggleMenu);
