@@ -161,33 +161,64 @@
                 "rows": 3
             },
             {
-                "key": "field_services_rep",
-                "label": "Cards de Serviço",
-                "name": "services_list",
-                "type": "repeater",
-                "layout": "block",
-                "sub_fields": [
-                    {
-                        "key": "field_srv_title",
-                        "label": "Título",
-                        "name": "title",
-                        "type": "text"
-                    },
-                    {
-                        "key": "field_srv_desc",
-                        "label": "Descrição",
-                        "name": "description",
-                        "type": "textarea",
-                        "rows": 3
-                    },
-                    {
-                        "key": "field_srv_img",
-                        "label": "Imagem de Fundo",
-                        "name": "image",
-                        "type": "image",
-                        "return_format": "url"
-                    }
-                ]
+                "key": "field_srv_title_1",
+                "label": "Serviço 1 - Título",
+                "name": "service_1_title",
+                "type": "text"
+            },
+            {
+                "key": "field_srv_desc_1",
+                "label": "Serviço 1 - Descrição",
+                "name": "service_1_description",
+                "type": "textarea",
+                "rows": 3
+            },
+            {
+                "key": "field_srv_img_1",
+                "label": "Serviço 1 - Imagem",
+                "name": "service_1_image",
+                "type": "image",
+                "return_format": "url"
+            },
+            {
+                "key": "field_srv_title_2",
+                "label": "Serviço 2 - Título",
+                "name": "service_2_title",
+                "type": "text"
+            },
+            {
+                "key": "field_srv_desc_2",
+                "label": "Serviço 2 - Descrição",
+                "name": "service_2_description",
+                "type": "textarea",
+                "rows": 3
+            },
+            {
+                "key": "field_srv_img_2",
+                "label": "Serviço 2 - Imagem",
+                "name": "service_2_image",
+                "type": "image",
+                "return_format": "url"
+            },
+            {
+                "key": "field_srv_title_3",
+                "label": "Serviço 3 - Título",
+                "name": "service_3_title",
+                "type": "text"
+            },
+            {
+                "key": "field_srv_desc_3",
+                "label": "Serviço 3 - Descrição",
+                "name": "service_3_description",
+                "type": "textarea",
+                "rows": 3
+            },
+            {
+                "key": "field_srv_img_3",
+                "label": "Serviço 3 - Imagem",
+                "name": "service_3_image",
+                "type": "image",
+                "return_format": "url"
             },
             {
                 "key": "field_gloss_tab",
@@ -216,19 +247,28 @@
                 "rows": 4
             },
             {
-                "key": "field_gloss_bullets",
-                "label": "Tópicos (Bullets)",
-                "name": "gloss_bullets",
-                "type": "repeater",
-                "layout": "table",
-                "sub_fields": [
-                    {
-                        "key": "field_gb_text",
-                        "label": "Texto",
-                        "name": "text",
-                        "type": "text"
-                    }
-                ]
+                "key": "field_gb_text_1",
+                "label": "Tópico 1",
+                "name": "gloss_bullet_1",
+                "type": "text"
+            },
+            {
+                "key": "field_gb_text_2",
+                "label": "Tópico 2",
+                "name": "gloss_bullet_2",
+                "type": "text"
+            },
+            {
+                "key": "field_gb_text_3",
+                "label": "Tópico 3",
+                "name": "gloss_bullet_3",
+                "type": "text"
+            },
+            {
+                "key": "field_gb_text_4",
+                "label": "Tópico 4",
+                "name": "gloss_bullet_4",
+                "type": "text"
             },
             {
                 "key": "field_gloss_img",
@@ -278,32 +318,61 @@
                 "type": "text"
             },
             {
-                "key": "field_testi_rep",
-                "label": "Depoimentos",
-                "name": "testimonials_list",
-                "type": "repeater",
-                "layout": "block",
-                "sub_fields": [
-                    {
-                        "key": "field_testi_txt",
-                        "label": "Texto do Depoimento",
-                        "name": "text",
-                        "type": "textarea",
-                        "rows": 3
-                    },
-                    {
-                        "key": "field_testi_author",
-                        "label": "Nome da Cliente",
-                        "name": "author",
-                        "type": "text"
-                    },
-                    {
-                        "key": "field_testi_role",
-                        "label": "Subtítulo (Ex: Cliente desde 2023)",
-                        "name": "role",
-                        "type": "text"
-                    }
-                ]
+                "key": "field_testi_txt_1",
+                "label": "Depoimento 1 - Texto",
+                "name": "testimonial_1_text",
+                "type": "textarea",
+                "rows": 3
+            },
+            {
+                "key": "field_testi_author_1",
+                "label": "Depoimento 1 - Autor",
+                "name": "testimonial_1_author",
+                "type": "text"
+            },
+            {
+                "key": "field_testi_role_1",
+                "label": "Depoimento 1 - Subtítulo",
+                "name": "testimonial_1_role",
+                "type": "text"
+            },
+            {
+                "key": "field_testi_txt_2",
+                "label": "Depoimento 2 - Texto",
+                "name": "testimonial_2_text",
+                "type": "textarea",
+                "rows": 3
+            },
+            {
+                "key": "field_testi_author_2",
+                "label": "Depoimento 2 - Autor",
+                "name": "testimonial_2_author",
+                "type": "text"
+            },
+            {
+                "key": "field_testi_role_2",
+                "label": "Depoimento 2 - Subtítulo",
+                "name": "testimonial_2_role",
+                "type": "text"
+            },
+            {
+                "key": "field_testi_txt_3",
+                "label": "Depoimento 3 - Texto",
+                "name": "testimonial_3_text",
+                "type": "textarea",
+                "rows": 3
+            },
+            {
+                "key": "field_testi_author_3",
+                "label": "Depoimento 3 - Autor",
+                "name": "testimonial_3_author",
+                "type": "text"
+            },
+            {
+                "key": "field_testi_role_3",
+                "label": "Depoimento 3 - Subtítulo",
+                "name": "testimonial_3_role",
+                "type": "text"
             },
             {
                 "key": "field_loc_tab",

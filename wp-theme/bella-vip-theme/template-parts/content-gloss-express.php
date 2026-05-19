@@ -41,27 +41,23 @@ $fallback_bullets = array(
             
             <ul class="space-y-4 mb-8">
                 <?php 
-                if( have_rows('gloss_bullets') ): 
-                    while( have_rows('gloss_bullets') ) : the_row();
-                        $text = get_sub_field('text');
-                ?>
-                <li class="flex items-center text-bella-text">
-                    <span class="w-1.5 h-1.5 bg-bella-terracotta rounded-full mr-3"></span>
-                    <?php echo esc_html($text); ?>
-                </li>
-                <?php 
-                    endwhile;
-                else :
-                    foreach($fallback_bullets as $bullet):
+                $bullets = [];
+                for($i = 1; $i <= 4; $i++) {
+                    $b = get_field('gloss_bullet_'.$i);
+                    if($b) $bullets[] = $b;
+                }
+
+                if(empty($bullets)) {
+                    $bullets = $fallback_bullets;
+                }
+
+                foreach($bullets as $bullet):
                 ?>
                 <li class="flex items-center text-bella-text">
                     <span class="w-1.5 h-1.5 bg-bella-terracotta rounded-full mr-3"></span>
                     <?php echo esc_html($bullet); ?>
                 </li>
-                <?php 
-                    endforeach;
-                endif; 
-                ?>
+                <?php endforeach; ?>
             </ul>
 
             <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">

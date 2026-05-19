@@ -39,41 +39,27 @@ $fallback_testimonials = array(
 
         <div class="grid md:grid-cols-3 gap-8">
             <?php 
-            if( have_rows('testimonials_list') ): 
-                while( have_rows('testimonials_list') ) : the_row();
-                    $text = get_sub_field('text');
-                    $author = get_sub_field('author');
-                    $role = get_sub_field('role');
-                    $initials_name = urlencode($author);
-                    $avatar = "https://ui-avatars.com/api/?name={$initials_name}&background=f4e9e5&color=d18c72";
-            ?>
-            <div class="bg-white p-8 rounded-2xl shadow-sm relative flex flex-col h-full hover:shadow-md transition-shadow">
-                
-                <div class="flex text-bella-terracotta mb-4">
-                    <!-- 5 Stars smaller -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                </div>
-                
-                <div class="text-bella-subtext italic mb-6 flex-grow leading-relaxed">
-                    <?php echo wp_kses_post($text); ?>
-                </div>
-                
-                <div class="flex items-center mt-auto border-t border-bella-nude pt-4">
-                    <img src="<?php echo esc_url($avatar); ?>" alt="<?php echo esc_attr($author); ?>" class="w-10 h-10 rounded-full mr-3 border border-bella-rose">
-                    <div>
-                        <p class="font-serif text-bella-text text-lg leading-tight"><?php echo esc_html($author); ?></p>
-                        <p class="text-xs text-bella-subtext mt-0.5"><?php echo esc_html($role); ?></p>
-                    </div>
-                </div>
-            </div>
-            <?php 
-                endwhile;
-            else :
-                foreach($fallback_testimonials as $testi):
+            $testimonials = [];
+            for($i = 1; $i <= 3; $i++) {
+                $t = get_field('testimonial_'.$i.'_text');
+                $a = get_field('testimonial_'.$i.'_author');
+                $r = get_field('testimonial_'.$i.'_role');
+                if($t || $a) {
+                    $initials = urlencode($a ?: $fallback_testimonials[$i-1]['author']);
+                    $testimonials[] = [
+                        'text' => $t ?: $fallback_testimonials[$i-1]['text'],
+                        'author' => $a ?: $fallback_testimonials[$i-1]['author'],
+                        'role' => $r ?: $fallback_testimonials[$i-1]['role'],
+                        'avatar' => "https://ui-avatars.com/api/?name={$initials}&background=f4e9e5&color=d18c72"
+                    ];
+                }
+            }
+
+            if(empty($testimonials)) {
+                $testimonials = $fallback_testimonials;
+            }
+
+            foreach($testimonials as $testi) :
             ?>
             <div class="bg-white p-8 rounded-2xl shadow-sm relative flex flex-col h-full hover:shadow-md transition-shadow">
                 
@@ -98,10 +84,7 @@ $fallback_testimonials = array(
                     </div>
                 </div>
             </div>
-            <?php 
-                endforeach;
-            endif; 
-            ?>
+            <?php endforeach; ?>
 
         </div>
     </div>

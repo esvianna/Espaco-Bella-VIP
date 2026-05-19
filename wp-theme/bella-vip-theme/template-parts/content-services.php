@@ -49,40 +49,26 @@ $fallback_services = array(
 
         <div class="grid md:grid-cols-3 gap-8">
             <?php 
-            if( have_rows('services_list') ): 
-                while( have_rows('services_list') ) : the_row();
-                    $title = get_sub_field('title');
-                    $desc = get_sub_field('description');
-                    $image = get_sub_field('image');
-                    // Generic icon if added dynamically
-                    $icon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>';
-            ?>
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-transparent hover:border-bella-rose/30">
-                <div class="h-48 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
-                    <img 
-                    src="<?php echo esc_url($image); ?>" 
-                    alt="<?php echo esc_attr($title); ?>" 
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    />
-                    <div class="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm p-2 rounded-full text-bella-terracotta shadow-sm">
-                        <?php echo $icon; ?>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-xl font-serif text-bella-text mb-3"><?php echo esc_html($title); ?></h3>
-                    <div class="text-bella-subtext mb-6 line-clamp-3"><?php echo wp_kses_post($desc); ?></div>
-                    <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="text-bella-terracotta font-medium flex items-center hover:text-[#c27a5d] transition-colors">
-                    Agendar horário <span class="ml-2">→</span>
-                    </a>
-                </div>
-            </div>
-            <?php 
-                endwhile;
-            else :
-                // Render fallback
-                foreach($fallback_services as $service) :
+            $services = [];
+            for($i = 1; $i <= 3; $i++) {
+                $t = get_field('service_'.$i.'_title');
+                $d = get_field('service_'.$i.'_description');
+                $img = get_field('service_'.$i.'_image');
+                if($t || $d || $img) {
+                    $services[] = [
+                        'title' => $t ?: $fallback_services[$i-1]['title'],
+                        'description' => $d ?: $fallback_services[$i-1]['description'],
+                        'image' => $img ?: $fallback_services[$i-1]['image'],
+                        'icon' => $fallback_services[$i-1]['icon']
+                    ];
+                }
+            }
+
+            if( empty($services) ) {
+                $services = $fallback_services;
+            }
+
+            foreach($services as $service) :
             ?>
             <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-transparent hover:border-bella-rose/30">
                 <div class="h-48 overflow-hidden relative">
@@ -99,16 +85,13 @@ $fallback_services = array(
                 </div>
                 <div class="p-8">
                     <h3 class="text-xl font-serif text-bella-text mb-3"><?php echo esc_html($service['title']); ?></h3>
-                    <p class="text-bella-subtext mb-6 line-clamp-3"><?php echo esc_html($service['description']); ?></p>
+                    <div class="text-bella-subtext mb-6 line-clamp-3"><?php echo wp_kses_post($service['description']); ?></div>
                     <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="text-bella-terracotta font-medium flex items-center hover:text-[#c27a5d] transition-colors">
                     Agendar horário <span class="ml-2">→</span>
                     </a>
                 </div>
             </div>
-            <?php 
-                endforeach;
-            endif; 
-            ?>
+            <?php endforeach; ?>
 
         </div>
     </div>
