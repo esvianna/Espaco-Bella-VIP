@@ -24,51 +24,51 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
         
-        <!-- Text Content -->
+        <!-- Text Content with Entrance Animations -->
         <div class="max-w-2xl">
-            <span class="inline-block py-1 px-3 rounded-full bg-white text-bella-terracotta text-sm font-medium mb-6 shadow-sm border border-bella-rose/30">
+            <span class="animate-fade-in-up inline-block py-1.5 px-4 rounded-full bg-white text-bella-terracotta text-xs tracking-wider uppercase font-bold mb-6 shadow-sm border border-bella-rose/30">
             <?php echo esc_html($hero_tag); ?>
             </span>
             
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-bella-text leading-tight mb-6">
+            <h1 class="animate-fade-in-up delay-100 text-5xl md:text-6xl lg:text-7xl font-serif text-bella-text leading-[1.1] mb-6">
             <?php echo wp_kses_post($hero_title); ?>
             </h1>
             
-            <p class="text-lg md:text-xl text-bella-subtext mb-8 leading-relaxed max-w-lg">
+            <p class="animate-fade-in-up delay-200 text-lg md:text-xl text-bella-subtext mb-10 leading-relaxed max-w-lg font-light">
             <?php echo wp_kses_post($hero_desc); ?>
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-4">
-            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary group">
+            <div class="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-5">
+            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary group shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle mr-2 h-5 w-5 group-hover:scale-110 transition-transform"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                 Agendar pelo WhatsApp
             </a>
-            <a href="#servicos" class="btn-secondary">
+            <a href="#servicos" class="btn-secondary hover:-translate-y-1 hover:bg-white transition-all duration-300">
                 Conhecer serviços
             </a>
             </div>
         </div>
 
-        <!-- Image -->
-        <div class="relative mt-10 lg:mt-0">
-            <div class="absolute inset-0 bg-bella-terracotta rounded-t-full rounded-b-3xl transform rotate-3 scale-105 opacity-10 z-0"></div>
-            <div class="relative rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl z-10 border-8 border-white">
+        <!-- Image with Entrance Animation -->
+        <div class="relative mt-12 lg:mt-0 animate-fade-in-up delay-200">
+            <div class="absolute inset-0 bg-bella-terracotta rounded-t-[100px] rounded-b-[40px] transform rotate-3 scale-105 opacity-10 z-0"></div>
+            <div class="relative rounded-t-[100px] rounded-b-[40px] overflow-hidden shadow-2xl z-10 border-[10px] border-white transition-transform duration-700 hover:scale-[1.02]">
             <img 
                 src="<?php echo esc_url($hero_image); ?>" 
                 alt="<?php esc_attr_e( 'Ambiente Espaço Bella VIP', 'bellavip' ); ?>" 
                 class="w-full h-auto object-cover aspect-[4/5]"
-                loading="lazy"
+                loading="eager"
             />
             </div>
             
-            <!-- Decorative element -->
-            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg z-20 flex items-center gap-3">
-            <div class="flex -space-x-2">
-                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://i.pravatar.cc/100?img=11" alt="Cliente 1"/>
-                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://i.pravatar.cc/100?img=12" alt="Cliente 2"/>
-                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://i.pravatar.cc/100?img=13" alt="Cliente 3"/>
+            <!-- Decorative element Premium -->
+            <div class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-bella-nude">
+            <div class="flex -space-x-3">
+                <img class="inline-block h-10 w-10 rounded-full ring-4 ring-white object-cover" src="https://i.pravatar.cc/100?img=47" alt="Cliente"/>
+                <img class="inline-block h-10 w-10 rounded-full ring-4 ring-white object-cover" src="https://i.pravatar.cc/100?img=44" alt="Cliente"/>
+                <img class="inline-block h-10 w-10 rounded-full ring-4 ring-white object-cover" src="https://i.pravatar.cc/100?img=32" alt="Cliente"/>
             </div>
-            <p class="text-xs font-medium text-bella-text"><span class="text-bella-terracotta font-bold">+500</span> mulheres<br/>atendidas</p>
+            <p class="text-sm font-medium text-bella-text leading-tight"><span class="text-bella-terracotta font-black text-lg block">+500</span> mulheres<br/>atendidas</p>
             </div>
         </div>
         

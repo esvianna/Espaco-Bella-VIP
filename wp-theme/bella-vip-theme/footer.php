@@ -9,11 +9,11 @@ $front_page_id = get_option( 'page_on_front' );
 $whatsapp_number = get_field( 'global_whatsapp_number', $front_page_id ) ?: '5541999999999';
 $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp_number ) );
 
-// Fallback de textos do rodapé caso queira adicionar ao ACF no futuro, 
-// por enquanto mantendo fixos conforme design aprovado, atualizando apenas o WhatsApp
+// Pegar o endereço da página inicial para exibir no rodapé
+$address = get_field('location_address', $front_page_id) ?: 'R. Eduardo Sprada, 0000 - Campo Comprido<br>Curitiba - PR';
 ?>
 
-	<footer id="colophon" class="bg-bella-nude/50 pt-16 pb-8 border-t border-bella-rose/20">
+	<footer id="colophon" class="bg-bella-nude/50 pt-16 pb-8 border-t border-bella-rose/20 relative z-10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
           
@@ -22,11 +22,11 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             if ( has_custom_logo() ) {
                 $custom_logo_id = get_theme_mod( 'custom_logo' );
                 $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="mb-4 inline-block">';
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="mb-4 inline-block hover:opacity-80 transition-opacity">';
                 echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" style="max-height: 110px; width: auto; object-fit: contain;">';
                 echo '</a>';
             } else {
-                echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide mb-4 inline-block">';
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide mb-4 inline-block hover:text-bella-terracotta transition-colors">';
                 bloginfo( 'name' );
                 echo '</a>';
             }
@@ -39,7 +39,9 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
           <div>
             <h4 class="font-serif text-lg text-bella-text mb-4">Contato</h4>
             <p class="text-bella-subtext mb-2">WhatsApp: <?php echo esc_html( preg_replace('/^55/', '', $whatsapp_number) ); ?></p>
-            <p class="text-bella-subtext mb-4">R. Eduardo Sprada, 0000 - Curitiba</p>
+            <div class="text-bella-subtext mb-4">
+                <?php echo wp_kses_post( $address ); ?>
+            </div>
             <div class="flex justify-center md:justify-start space-x-4 text-bella-terracotta">
               <a href="#" class="hover:text-[#c27a5d] transition-colors font-medium">Instagram</a>
               <a href="#" class="hover:text-[#c27a5d] transition-colors font-medium">Facebook</a>
@@ -51,7 +53,7 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             <p class="text-bella-subtext mb-4">
               Fale conosco pelo WhatsApp e encontre o melhor horário para seu atendimento.
             </p>
-            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full md:w-auto">
+            <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full md:w-auto shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
               Agendar atendimento
             </a>
           </div>
@@ -65,13 +67,41 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
       </div>
 	</footer><!-- #colophon -->
 
-    <!-- Floating WhatsApp -->
-    <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" id="floating-whatsapp" class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center opacity-0 translate-y-10 pointer-events-none" aria-label="Agendar pelo WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-        <span class="absolute -top-10 right-0 bg-white text-bella-text text-sm py-1 px-3 rounded-lg shadow-md whitespace-nowrap opacity-0 transition-opacity duration-300 hover:opacity-100 peer-hover:opacity-100">
+    <!-- Floating WhatsApp Premium UX -->
+    <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" id="floating-whatsapp" class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:shadow-[0_8px_30px_rgb(37,211,102,0.6)] transition-all duration-300 transform hover:scale-110 flex items-center justify-center opacity-0 translate-y-10 pointer-events-none group" aria-label="Agendar pelo WhatsApp">
+        
+        <!-- Ícone com animação de pulse (heartbeat suave) -->
+        <div class="relative">
+            <div class="absolute inset-0 bg-white opacity-20 rounded-full animate-ping group-hover:animate-none"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle relative z-10"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        </div>
+        
+        <!-- Tooltip que aparece após carregar e no hover -->
+        <span class="absolute -top-12 right-0 bg-white text-bella-text text-sm py-2 px-4 rounded-xl shadow-lg border border-bella-nude whitespace-nowrap opacity-0 transition-opacity duration-500 group-hover:opacity-100 font-medium" id="whatsapp-tooltip">
             Agende seu horário!
+            <!-- Triângulo da tooltip -->
+            <svg class="absolute text-white h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
         </span>
     </a>
+
+    <!-- Script para animar a Tooltip automaticamente -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const tooltip = document.getElementById('whatsapp-tooltip');
+                if(tooltip) {
+                    tooltip.classList.remove('opacity-0');
+                    tooltip.classList.add('opacity-100');
+                    
+                    // Esconde de volta após 4 segundos se o usuário não passar o mouse
+                    setTimeout(function() {
+                        tooltip.classList.remove('opacity-100');
+                        tooltip.classList.add('opacity-0');
+                    }, 4000);
+                }
+            }, 3000);
+        });
+    </script>
 
 </div><!-- #page -->
 
