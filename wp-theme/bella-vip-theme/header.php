@@ -30,8 +30,8 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             if ( has_custom_logo() ) {
                 $custom_logo_id = get_theme_mod( 'custom_logo' );
                 $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">';
-                echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="h-12 w-auto object-contain max-w-[200px]">';
+                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="block">';
+                echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" style="max-height: 90px; width: auto; object-fit: contain;">';
                 echo '</a>';
             } else {
                 echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide">';
