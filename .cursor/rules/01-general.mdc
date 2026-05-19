@@ -1,0 +1,26 @@
+---
+description: "Regras Essenciais do Projeto Bella VIP"
+globs: ["*.jsx", "*.js", "*.css"]
+---
+
+# Regras de Codificação e Fluxo de Trabalho (Espaço Bella VIP)
+
+## 1. Contexto Obrigatório
+- Antes de qualquer alteração, consulte `PROJECT_STATUS.md` e `DECISIONS.md`.
+- Entenda se o escopo mudou ou se há decisões técnicas restritivas (ex: Tailwind v4 puro).
+- Preservar os links do WhatsApp que são vitais para a conversão do site.
+
+## 2. Padrão de Componentes React
+- Mantenha os componentes pequenos e com responsabilidade única.
+- Use `lucide-react` para ícones, verificando primeiro se o ícone existe ou use alternativa de texto.
+- Prefira Functional Components e Hooks padrão (`useState`, `useEffect`).
+
+## 3. Padrão de Estilização (Tailwind)
+- Use a paleta de cores definida em `index.css` (`bella-text`, `bella-terracotta`, `bella-nude`, `bella-rose`).
+- Utilize componentes base (`.btn-primary`, `.btn-secondary`) definidos no CSS sempre que possível.
+- Construa Mobile-First (classes padrão para mobile, `md:` e `lg:` para telas maiores).
+- Evite refatoração maciça de classes sem uma razão clara; o foco é que a tela fique igual ao protótipo, mas com código passível de replicação via Elementor/WP.
+
+## 4. Atualização de Histórico
+- Ao finalizar qualquer adição importante, o arquivo `PROJECT_STATUS.md` e `CHANGELOG.md` devem refletir a novidade.
+- Nunca quebre o que já está feito; se quebrar, faça rollback ou documente em `DECISIONS.md`.

@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bella-nude: #F5F0EB;
+  --color-bella-rose: #E3C0B7;
+  --color-bella-terracotta: #D48C70;
+  --color-bella-white: #FAFAF9;
+  --color-bella-text: #292524;
+  --color-bella-subtext: #57534E;
+  
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-bella-white);
+    color: var(--color-bella-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-bella-text);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-bella-terracotta hover:bg-[#c27a5d] transition-colors duration-300;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-bella-terracotta text-base font-medium rounded-md text-bella-terracotta bg-transparent hover:bg-bella-nude transition-colors duration-300;
+  }
+}
