@@ -80,7 +80,7 @@ $address = get_field('location_address', $front_page_id) ?: 'R. Eduardo Sprada, 
         <span class="absolute -top-12 right-0 bg-white text-bella-text text-sm py-2 px-4 rounded-xl shadow-lg border border-bella-nude whitespace-nowrap opacity-0 transition-opacity duration-500 group-hover:opacity-100 font-medium" id="whatsapp-tooltip">
             Agende seu horário!
             <!-- Triângulo da tooltip -->
-            <svg class="absolute text-white h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
+            <div class="absolute right-6 top-full" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid white;"></div>
         </span>
     </a>
 
