@@ -2,6 +2,18 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.9] - Briefing da Página de Produto (Theme URI) - 2026-05-26
+### Added
+- Criado `docs/bella-vip-theme-page-brief.md`: documento de handoff completo para a construção da página `vtis.com.br/temas/bella-vip` no repositório do site institucional VTIS.
+- O briefing cobre: objetivo, decisões consolidadas, regras de compliance do WordPress.org, arquitetura de URLs com hub `/temas/`, wireframe das 10 seções, SEO técnico (Schema.org `SoftwareApplication`, OpenGraph, sitemap), stack WordPress (CPT `tema`), checklist Definition of Done e próximos passos.
+- Documento auto-contido: pode ser copiado integralmente para o outro repositório como única fonte de verdade.
+
+### Decisões registradas (ver `DECISIONS.md` itens 006 a 008)
+- Hub `/temas/` via CPT `tema` no WordPress (estrutura escalável para futuros temas e plugins VTIS).
+- Demo híbrida: principal em `demo.vtis.com.br/bella-vip` + secundária no WordPress Playground.
+- SEO técnico completo (Schema, OG, sitemap).
+- Sem versão Pro / sem bloco Free vs Pro.
+
 ## [1.2.8] - Submissão ao WordPress.org Theme Directory - 2026-05-26
 ### Milestone
 - **Tema submetido ao diretório oficial do WordPress.org!** Scan automatizado retornou **PASS** (zero erros REQUIRED).
