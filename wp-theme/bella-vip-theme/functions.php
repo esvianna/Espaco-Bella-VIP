@@ -78,13 +78,4 @@ add_action( 'wp_enqueue_scripts', 'bellavip_scripts' );
  */
 require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Registra categoria de Padrões de Bloco
- */
-function bellavip_register_pattern_categories() {
-	register_block_pattern_category(
-		'bellavip',
-		array( 'label' => esc_html__( 'Bella VIP', 'bellavip' ) )
-	);
-}
-add_action( 'init', 'bellavip_register_pattern_categories' );
+

@@ -10,7 +10,7 @@
  */
 function bellavip_customize_register( $wp_customize ) {
 
-	// Seção Bella VIP
+	// Seção Geral Bella VIP (Existente)
 	$wp_customize->add_section( 'bellavip_settings', array(
 		'title'       => esc_html__( 'Configurações Bella VIP', 'bellavip' ),
 		'description' => esc_html__( 'Personalize as cores principais e os contatos do tema.', 'bellavip' ),
@@ -47,7 +47,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bellavip_color_terracotta', array(
 		'label'    => esc_html__( 'Cor Principal (Terracotta)', 'bellavip' ),
-		'section  ' => 'bellavip_settings',
+		'section'  => 'bellavip_settings',
 		'settings' => 'bellavip_color_terracotta',
 	) ) );
 
@@ -61,6 +61,674 @@ function bellavip_customize_register( $wp_customize ) {
 		'section'  => 'bellavip_settings',
 		'settings' => 'bellavip_color_nude',
 	) ) );
+
+	// ----------------------------------------------------
+	// PAINEL DA PÁGINA INICIAL
+	// ----------------------------------------------------
+	$wp_customize->add_panel( 'bellavip_homepage_panel', array(
+		'title'       => esc_html__( 'Página Inicial Bella VIP', 'bellavip' ),
+		'description' => esc_html__( 'Personalize todas as seções da Landing Page.', 'bellavip' ),
+		'priority'    => 31,
+	) );
+
+	// SEÇÃO HERO
+	$wp_customize->add_section( 'bellavip_home_hero', array(
+		'title'    => esc_html__( 'Hero - Banner Principal', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_hero_tagline', array(
+		'default'           => 'Campo Comprido, Curitiba',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_hero_tagline', array(
+		'label'   => esc_html__( 'Tagline / Localização', 'bellavip' ),
+		'section' => 'bellavip_home_hero',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_hero_title', array(
+		'default'           => 'Cabelo, beleza e bem-estar',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_hero_title', array(
+		'label'   => esc_html__( 'Título Principal (aceita HTML como <br>)', 'bellavip' ),
+		'section' => 'bellavip_home_hero',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_hero_description', array(
+		'default'           => 'Atendimento feminino e personalizado para quem deseja cuidar dos cabelos, relaxar e realçar a autoestima em um ambiente acolhedor.',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_hero_description', array(
+		'label'   => esc_html__( 'Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_hero',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_hero_btn_text', array(
+		'default'           => 'Conhecer serviços',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_hero_btn_text', array(
+		'label'   => esc_html__( 'Texto do Botão', 'bellavip' ),
+		'section' => 'bellavip_home_hero',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_hero_btn_url', array(
+		'default'           => '#servicos',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_hero_btn_url', array(
+		'label'   => esc_html__( 'Link do Botão', 'bellavip' ),
+		'section' => 'bellavip_home_hero',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_hero_image', array(
+		'default'           => 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_hero_image', array(
+		'label'   => esc_html__( 'Imagem Lateral', 'bellavip' ),
+		'section' => 'bellavip_home_hero',
+	) ) );
+
+
+	// SEÇÃO SERVIÇOS
+	$wp_customize->add_section( 'bellavip_home_services', array(
+		'title'    => esc_html__( 'Serviços', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 20,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_services_title', array(
+		'default'           => 'Nossos Serviços',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_services_title', array(
+		'label'   => esc_html__( 'Título da Seção', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_services_subtitle', array(
+		'default'           => 'Soluções completas de beleza e bem-estar, com atendimento exclusivo e foco em resultados reais.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_services_subtitle', array(
+		'label'   => esc_html__( 'Subtítulo da Seção', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'textarea',
+	) );
+
+	// Card 1
+	$wp_customize->add_setting( 'bellavip_service1_title', array(
+		'default'           => 'Gloss Express',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_service1_title', array(
+		'label'   => esc_html__( 'Serviço 1: Nome', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_service1_desc', array(
+		'default'           => 'Ideal para suavizar e disfarçar fios brancos, dar brilho intenso e renovar o visual sem aspecto de coloração pesada.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_service1_desc', array(
+		'label'   => esc_html__( 'Serviço 1: Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_service1_image', array(
+		'default'           => 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service1_image', array(
+		'label'   => esc_html__( 'Serviço 1: Imagem', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+	) ) );
+
+	// Card 2
+	$wp_customize->add_setting( 'bellavip_service2_title', array(
+		'default'           => 'Cabelo',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_service2_title', array(
+		'label'   => esc_html__( 'Serviço 2: Nome', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_service2_desc', array(
+		'default'           => 'Corte, escova, progressiva, tratamentos de hidratação profunda e finalização perfeita para o seu dia a dia.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_service2_desc', array(
+		'label'   => esc_html__( 'Serviço 2: Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_service2_image', array(
+		'default'           => 'https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service2_image', array(
+		'label'   => esc_html__( 'Serviço 2: Imagem', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+	) ) );
+
+	// Card 3
+	$wp_customize->add_setting( 'bellavip_service3_title', array(
+		'default'           => 'Massagens',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_service3_title', array(
+		'label'   => esc_html__( 'Serviço 3: Nome', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_service3_desc', array(
+		'default'           => 'Técnicas de relaxamento, bem-estar e alívio de tensões para você se desconectar e recarregar as energias.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_service3_desc', array(
+		'label'   => esc_html__( 'Serviço 3: Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_service3_image', array(
+		'default'           => 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service3_image', array(
+		'label'   => esc_html__( 'Serviço 3: Imagem', 'bellavip' ),
+		'section' => 'bellavip_home_services',
+	) ) );
+
+
+	// SEÇÃO GLOSS EXPRESS
+	$wp_customize->add_section( 'bellavip_home_gloss', array(
+		'title'    => esc_html__( 'Destaque: Gloss Express', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 30,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_tagline', array(
+		'default'           => 'Destaque',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_tagline', array(
+		'label'   => esc_html__( 'Tagline / Selo', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_title', array(
+		'default'           => 'Gloss Express: uma alternativa leve para suavizar fios brancos',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_title', array(
+		'label'   => esc_html__( 'Título de Destaque', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_description', array(
+		'default'           => 'Para quem deseja suavizar os fios brancos sem partir para uma coloração pesada, o Gloss Express ajuda a renovar o visual, trazer brilho e manter um resultado mais natural e iluminado.',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_description', array(
+		'label'   => esc_html__( 'Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_feature1', array(
+		'default'           => 'Menos agressivo que tinturas convencionais',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_feature1', array(
+		'label'   => esc_html__( 'Benefício 1', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_feature2', array(
+		'default'           => 'Proporciona brilho espelhado',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_feature2', array(
+		'label'   => esc_html__( 'Benefício 2', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_feature3', array(
+		'default'           => 'Manutenção mais fácil e espaçada',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_feature3', array(
+		'label'   => esc_html__( 'Benefício 3', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_btn_text', array(
+		'default'           => 'Quero saber se serve para meu cabelo',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_btn_text', array(
+		'label'   => esc_html__( 'Texto do Botão', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_btn_url', array(
+		'default'           => '#',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gloss_btn_url', array(
+		'label'   => esc_html__( 'Link do Botão', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gloss_image', array(
+		'default'           => 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_gloss_image', array(
+		'label'   => esc_html__( 'Imagem do Destaque', 'bellavip' ),
+		'section' => 'bellavip_home_gloss',
+	) ) );
+
+
+	// SEÇÃO SOBRE
+	$wp_customize->add_section( 'bellavip_home_about', array(
+		'title'    => esc_html__( 'Sobre o Espaço', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 40,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_about_title', array(
+		'default'           => 'Um espaço pensado para cuidar de você',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_title', array(
+		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_about_description', array(
+		'default'           => 'No Espaço Bella VIP, cada atendimento é feito com atenção, carinho e cuidado aos detalhes. Oferecemos serviços de cabelo, Gloss Express, massagens e cuidados de beleza para mulheres que desejam se sentir bem, bonitas e confiantes.',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_about_description', array(
+		'label'   => esc_html__( 'Descrição Principal', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_about_image1', array(
+		'default'           => 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_about_image1', array(
+		'label'   => esc_html__( 'Imagem Decorativa 1', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+	) ) );
+
+	$wp_customize->add_setting( 'bellavip_about_image2', array(
+		'default'           => 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_about_image2', array(
+		'label'   => esc_html__( 'Imagem Decorativa 2', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+	) ) );
+
+	// Diferencial 1
+	$wp_customize->add_setting( 'bellavip_about_feat1_title', array(
+		'default'           => 'Profissionais Especializadas',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_feat1_title', array(
+		'label'   => esc_html__( 'Diferencial 1: Título', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_about_feat1_desc', array(
+		'default'           => 'Equipe treinada para entender e realçar a sua beleza natural.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_feat1_desc', array(
+		'label'   => esc_html__( 'Diferencial 1: Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'textarea',
+	) );
+
+	// Diferencial 2
+	$wp_customize->add_setting( 'bellavip_about_feat2_title', array(
+		'default'           => 'Ambiente Acolhedor',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_feat2_title', array(
+		'label'   => esc_html__( 'Diferencial 2: Título', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_about_feat2_desc', array(
+		'default'           => 'Um momento só seu. Tome um café, relaxe e esqueça a pressa do dia a dia.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_feat2_desc', array(
+		'label'   => esc_html__( 'Diferencial 2: Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'textarea',
+	) );
+
+	// Diferencial 3
+	$wp_customize->add_setting( 'bellavip_about_feat3_title', array(
+		'default'           => 'Produtos Premium',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_feat3_title', array(
+		'label'   => esc_html__( 'Diferencial 3: Título', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_about_feat3_desc', array(
+		'default'           => 'Trabalhamos apenas com marcas renomadas para garantir a saúde dos seus fios e pele.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_about_feat3_desc', array(
+		'label'   => esc_html__( 'Diferencial 3: Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_about',
+		'type'    => 'textarea',
+	) );
+
+
+	// SEÇÃO GALERIA
+	$wp_customize->add_section( 'bellavip_home_gallery', array(
+		'title'    => esc_html__( 'Galeria', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 50,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gallery_title', array(
+		'default'           => 'Resultados e momentos no Espaço Bella VIP',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gallery_title', array(
+		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'section' => 'bellavip_home_gallery',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_gallery_subtitle', array(
+		'default'           => 'Um pouquinho do nosso dia a dia e dos resultados que entregamos com tanto amor.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_gallery_subtitle', array(
+		'label'   => esc_html__( 'Subtítulo', 'bellavip' ),
+		'section' => 'bellavip_home_gallery',
+		'type'    => 'textarea',
+	) );
+
+	for ( $i = 1; $i <= 4; $i++ ) {
+		$default_img = '';
+		if ( $i == 1 ) {
+			$default_img = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+		} elseif ( $i == 2 ) {
+			$default_img = 'https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+		} elseif ( $i == 3 ) {
+			$default_img = 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+		} elseif ( $i == 4 ) {
+			$default_img = 'https://images.unsplash.com/photo-1516975080661-46904d9c49d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+		}
+
+		$wp_customize->add_setting( "bellavip_gallery_img{$i}", array(
+			'default'           => $default_img,
+			'sanitize_callback' => 'esc_url_raw',
+		) );
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "bellavip_gallery_img{$i}", array(
+			'label'   => sprintf( esc_html__( 'Imagem %d', 'bellavip' ), $i ),
+			'section' => 'bellavip_home_gallery',
+		) ) );
+	}
+
+
+	// SEÇÃO DEPOIMENTOS
+	$wp_customize->add_section( 'bellavip_home_testimonials', array(
+		'title'    => esc_html__( 'Depoimentos', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 60,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_testimonials_title', array(
+		'default'           => 'Clientes que já viveram essa experiência',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_testimonials_title', array(
+		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+
+	// Testemunho 1
+	$wp_customize->add_setting( 'bellavip_test1_text', array(
+		'default'           => '"O Gloss Express salvou meu cabelo! Escondeu meus brancos sem precisar de tinta pesada. O ambiente é maravilhoso, super relaxante."',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test1_text', array(
+		'label'   => esc_html__( 'Depoimento 1: Texto', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'textarea',
+	) );
+	$wp_customize->add_setting( 'bellavip_test1_author', array(
+		'default'           => 'Ana C.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test1_author', array(
+		'label'   => esc_html__( 'Depoimento 1: Nome do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+	$wp_customize->add_setting( 'bellavip_test1_info', array(
+		'default'           => 'Cliente desde 2023',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test1_info', array(
+		'label'   => esc_html__( 'Depoimento 1: Detalhe do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+	$wp_customize->add_setting( 'bellavip_test1_avatar', array(
+		'default'           => 'https://ui-avatars.com/api/?name=Ana+C&background=f4e9e5&color=d18c72',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_test1_avatar', array(
+		'label'   => esc_html__( 'Depoimento 1: Foto do Autor (100x100 recomendado)', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+	) ) );
+
+	// Testemunho 2
+	$wp_customize->add_setting( 'bellavip_test2_text', array(
+		'default'           => '"Sempre faço meu corte e hidratação aqui. As meninas são super atenciosas e o resultado é sempre impecável. Recomendo muito!"',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test2_text', array(
+		'label'   => esc_html__( 'Depoimento 2: Texto', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'textarea',
+	) );
+	$wp_customize->add_setting( 'bellavip_test2_author', array(
+		'default'           => 'Juliana T.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test2_author', array(
+		'label'   => esc_html__( 'Depoimento 2: Nome do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+	$wp_customize->add_setting( 'bellavip_test2_info', array(
+		'default'           => 'Cliente',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test2_info', array(
+		'label'   => esc_html__( 'Depoimento 2: Detalhe do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+	$wp_customize->add_setting( 'bellavip_test2_avatar', array(
+		'default'           => 'https://ui-avatars.com/api/?name=Juliana+T&background=f4e9e5&color=d18c72',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_test2_avatar', array(
+		'label'   => esc_html__( 'Depoimento 2: Foto do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+	) ) );
+
+	// Testemunho 3
+	$wp_customize->add_setting( 'bellavip_test3_text', array(
+		'default'           => '"A massagem relaxante é o meu momento favorito do mês. É um espaço realmente acolhedor, você se sente em casa."',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test3_text', array(
+		'label'   => esc_html__( 'Depoimento 3: Texto', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'textarea',
+	) );
+	$wp_customize->add_setting( 'bellavip_test3_author', array(
+		'default'           => 'Mariana S.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test3_author', array(
+		'label'   => esc_html__( 'Depoimento 3: Nome do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+	$wp_customize->add_setting( 'bellavip_test3_info', array(
+		'default'           => 'Cliente desde 2024',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_test3_info', array(
+		'label'   => esc_html__( 'Depoimento 3: Detalhe do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+		'type'    => 'text',
+	) );
+	$wp_customize->add_setting( 'bellavip_test3_avatar', array(
+		'default'           => 'https://ui-avatars.com/api/?name=Mariana+S&background=f4e9e5&color=d18c72',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_test3_avatar', array(
+		'label'   => esc_html__( 'Depoimento 3: Foto do Autor', 'bellavip' ),
+		'section' => 'bellavip_home_testimonials',
+	) ) );
+
+
+	// SEÇÃO LOCALIZAÇÃO
+	$wp_customize->add_section( 'bellavip_home_location', array(
+		'title'    => esc_html__( 'Localização e Mapa', 'bellavip' ),
+		'panel'    => 'bellavip_homepage_panel',
+		'priority' => 70,
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_title', array(
+		'default'           => 'Estamos no Campo Comprido, em Curitiba',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_location_title', array(
+		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'section' => 'bellavip_home_location',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_description', array(
+		'default'           => 'Um espaço de fácil acesso, preparado com todo conforto para receber você. Agende seu horário e venha nos fazer uma visita.',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_location_description', array(
+		'label'   => esc_html__( 'Descrição', 'bellavip' ),
+		'section' => 'bellavip_home_location',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_name', array(
+		'default'           => 'Espaço Bella VIP',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_location_name', array(
+		'label'   => esc_html__( 'Nome do Espaço', 'bellavip' ),
+		'section' => 'bellavip_home_location',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_address', array(
+		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido<br>Curitiba - PR',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_location_address', array(
+		'label'       => esc_html__( 'Endereço Completo (aceita HTML)', 'bellavip' ),
+		'section'     => 'bellavip_home_location',
+		'type'        => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_map_html', array(
+		'default'           => '',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'bellavip_location_map_html', array(
+		'label'       => esc_html__( 'Iframe / HTML do Google Maps', 'bellavip' ),
+		'description' => esc_html__( 'Cole o código HTML (<iframe>) gerado pelo Google Maps aqui.', 'bellavip' ),
+		'section'     => 'bellavip_home_location',
+		'type'        => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_btn1_text', array(
+		'default'           => 'Como chegar',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_location_btn1_text', array(
+		'label'   => esc_html__( 'Botão 1: Texto', 'bellavip' ),
+		'section' => 'bellavip_home_location',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_btn1_url', array(
+		'default'           => 'https://maps.google.com',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_location_btn1_url', array(
+		'label'   => esc_html__( 'Botão 1: Link', 'bellavip' ),
+		'section' => 'bellavip_home_location',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'bellavip_location_btn2_text', array(
+		'default'           => 'Agendar pelo WhatsApp',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bellavip_location_btn2_text', array(
+		'label'   => esc_html__( 'Botão 2 (WhatsApp): Texto', 'bellavip' ),
+		'section' => 'bellavip_home_location',
+		'type'    => 'text',
+	) );
+
 }
 add_action( 'customize_register', 'bellavip_customize_register' );
 

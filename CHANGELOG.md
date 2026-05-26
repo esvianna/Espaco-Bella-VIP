@@ -2,6 +2,24 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.1] - Limpeza de Arquivos Obsoletos e Otimização do Zip - 2026-05-26
+### Removed
+- Exclusão do arquivo obsoleto `acf-export.json` na raiz do tema.
+- Exclusão da pasta `patterns/` e de seu registro em `functions.php` (Gutenberg Block Patterns inativos).
+
+### Changed
+- Otimização do processo de geração do arquivo `bella-vip-theme.zip` para excluir arquivos de desenvolvimento local (`node_modules/`, `package.json`, `package-lock.json` e `src/`), reduzindo o tamanho do arquivo final de 6.5 MB para ~726 KB (redução de 89%).
+
+## [1.2.0] - Home 100% Controlável pelo Customizer (Sem Gutenberg) - 2026-05-26
+### Added
+- Criação dos novos template parts na pasta `template-parts/` para cada uma das seções da Landing Page (`home-hero.php`, `home-services.php`, `home-gloss-express.php`, `home-about.php`, `home-gallery.php`, `home-testimonials.php`, `home-location.php`).
+- Mapeamento completo e registro de todos os campos da Home (textos, imagens, links e iframes do Google Maps) no WordPress Customizer dentro de um painel unificado `bellavip_homepage_panel` ("Página Inicial Bella VIP").
+- Suporte a fallback inteligente: caso o usuário não configure nenhuma informação, o site carrega os textos e imagens padrão do protótipo automaticamente.
+
+### Changed
+- Refatoração de `front-page.php` para renderizar as seções via chamadas de `get_template_part` dinâmicas ao invés de Gutenberg Block Patterns, blindando o layout contra erros acidentais de usuários inexperientes.
+- Opcionalmente renderiza blocos do Gutenberg apenas no final do site, se existirem no editor.
+
 ## [1.1.1] - Correção do Fallback de Seções na Home - 2026-05-26
 ### Fixed
 - Correção em `front-page.php` para exibir todas as seções (Block Patterns) em ordem como fallback caso o conteúdo da página inicial no painel do WordPress esteja vazio.
