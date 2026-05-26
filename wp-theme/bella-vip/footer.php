@@ -63,6 +63,12 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
           <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'Todos os direitos reservados.', 'bella-vip' ); ?></p>
           <p class="mt-2 md:mt-0">
             <?php 
+            $developer_url = esc_url( 'https://vtis.com.br/' );
+            $developer_link = sprintf(
+              '<a href="%1$s" target="_blank" rel="noopener noreferrer" class="font-medium text-bella-terracotta hover:underline">%2$s</a>',
+              $developer_url,
+              'VTIS'
+            );
             printf(
               wp_kses(
                 /* translators: %s: developer link */
@@ -76,7 +82,7 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
                   ),
                 )
               ),
-              '<a href="https://vtis.com.br/" target="_blank" rel="noopener noreferrer" class="font-medium text-bella-terracotta hover:underline">VTIS</a>'
+              $developer_link
             ); 
             ?>
           </p>

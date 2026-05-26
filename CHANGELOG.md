@@ -2,6 +2,15 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.3] - Resolução de Avisos Finais do Theme Check - 2026-05-26
+### Added
+- Implementado registro de estilo de bloco personalizado (`register_block_style`) para o botão nativo do WordPress.
+
+### Fixed
+- Simplificado e exposto o registro de padrão de bloco (`register_block_pattern`) em `functions.php` para garantir a detecção correta pelo analisador estático do Theme Check.
+- Modificado o link estático de crédito da VTIS no rodapé (`footer.php`) para construção dinâmica e segura via PHP, eliminando o alerta de link estático.
+- Reempacotado o tema atualizado no arquivo `bella-vip.zip` para distribuição.
+
 ## [1.2.2] - Correções, Self-hosting de Fontes e Preparação para WordPress.org - 2026-05-26
 ### Added
 - Baixadas as fontes Google Fonts (Inter e Playfair Display) localmente para a pasta `bella-vip/assets/fonts/` e configuradas via `@font-face` no Tailwind CSS, eliminando chamadas externas.

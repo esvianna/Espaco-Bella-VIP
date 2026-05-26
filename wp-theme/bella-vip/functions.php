@@ -114,21 +114,30 @@ add_action( 'wp_enqueue_scripts', 'bellavip_scripts' );
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Registrar padrões de bloco customizados.
+ * Registrar padrões e estilos de bloco customizados.
  */
-function bellavip_register_block_patterns() {
-	if ( function_exists( 'register_block_pattern' ) ) {
-		register_block_pattern(
-			'bella-vip/cta',
-			array(
-				'title'       => esc_html__( 'Agendamento WhatsApp', 'bella-vip' ),
-				'description' => esc_html_x( 'Um bloco de chamada para agendamento de atendimentos no WhatsApp.', 'Block pattern description', 'bella-vip' ),
-				'content'     => '<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.5rem"}}} --><p class="has-text-align-center" style="font-size:1.5rem"><strong>' . esc_html__( 'Gostaria de agendar um atendimento?', 'bella-vip' ) . '</strong></p><!-- /wp:paragraph --><!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">' . esc_html__( 'Fale conosco diretamente pelo WhatsApp para reservar o seu horário personalizado.', 'bella-vip' ) . '</p><!-- /wp:paragraph -->',
-				'categories'  => array( 'buttons' ),
-			)
-		);
-	}
+function bellavip_register_block_features() {
+	// Registrar padrão de bloco
+	register_block_pattern(
+		'bella-vip/cta',
+		array(
+			'title'       => esc_html__( 'Agendamento WhatsApp', 'bella-vip' ),
+			'description' => esc_html_x( 'Um bloco de chamada para agendamento de atendimentos no WhatsApp.', 'Block pattern description', 'bella-vip' ),
+			'content'     => '<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.5rem"}}} --><p class="has-text-align-center" style="font-size:1.5rem"><strong>' . esc_html__( 'Gostaria de agendar um atendimento?', 'bella-vip' ) . '</strong></p><!-- /wp:paragraph --><!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">' . esc_html__( 'Fale conosco diretamente pelo WhatsApp para reservar o seu horário personalizado.', 'bella-vip' ) . '</p><!-- /wp:paragraph -->',
+			'categories'  => array( 'buttons' ),
+		)
+	);
+
+	// Registrar estilo de bloco personalizado (Botão Terracota do Tema)
+	register_block_style(
+		'core/button',
+		array(
+			'name'  => 'bella-vip-terracotta',
+			'label' => esc_html__( 'Botão Terracota Bella VIP', 'bella-vip' ),
+		)
+	);
 }
-add_action( 'init', 'bellavip_register_block_patterns' );
+add_action( 'init', 'bellavip_register_block_features' );
+
 
 
