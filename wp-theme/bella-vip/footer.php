@@ -21,9 +21,15 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
             if ( has_custom_logo() ) {
                 $custom_logo_id = get_theme_mod( 'custom_logo' );
                 $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="mb-4 inline-block hover:opacity-80 transition-opacity">';
-                echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" style="max-height: 110px; width: auto; object-fit: contain;">';
-                echo '</a>';
+                if ( is_array( $logo ) ) {
+                    echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="mb-4 inline-block hover:opacity-80 transition-opacity">';
+                    echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" style="max-height: 110px; width: auto; object-fit: contain;">';
+                    echo '</a>';
+                } else {
+                    echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide mb-4 inline-block hover:text-bella-terracotta transition-colors">';
+                    bloginfo( 'name' );
+                    echo '</a>';
+                }
             } else {
                 echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl font-bold text-bella-text tracking-wide mb-4 inline-block hover:text-bella-terracotta transition-colors">';
                 bloginfo( 'name' );

@@ -88,14 +88,21 @@ add_action( 'widgets_init', 'bellavip_widgets_init' );
  * Enfileirar scripts e estilos.
  */
 function bellavip_scripts() {
+	// Determinar versões com fallback seguro se os arquivos não existirem
+	$tailwind_path = get_template_directory() . '/assets/css/output.css';
+	$tailwind_ver  = file_exists( $tailwind_path ) ? filemtime( $tailwind_path ) : BELLA_VIP_VERSION;
+
+	$main_js_path  = get_template_directory() . '/assets/js/main.js';
+	$main_js_ver   = file_exists( $main_js_path ) ? filemtime( $main_js_path ) : BELLA_VIP_VERSION;
+
 	// CSS do Tailwind (Compilado)
-	wp_enqueue_style( 'bellavip-tailwind', get_template_directory_uri() . '/assets/css/output.css', array(), filemtime( get_template_directory() . '/assets/css/output.css' ) );
+	wp_enqueue_style( 'bellavip-tailwind', get_template_directory_uri() . '/assets/css/output.css', array(), $tailwind_ver );
 
 	// CSS Principal do Tema (para requisitos do WP)
 	wp_enqueue_style( 'bellavip-style', get_stylesheet_uri(), array(), BELLA_VIP_VERSION );
 
 	// Script global (Navegação mobile, WhatsApp, etc)
-	wp_enqueue_script( 'bellavip-main', get_template_directory_uri() . '/assets/js/main.js', array(), filemtime( get_template_directory() . '/assets/js/main.js' ), true );
+	wp_enqueue_script( 'bellavip-main', get_template_directory_uri() . '/assets/js/main.js', array(), $main_js_ver, true );
 
 	// Habilitar script de resposta de comentários condicionalmente
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

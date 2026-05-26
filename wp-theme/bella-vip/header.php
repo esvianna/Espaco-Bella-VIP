@@ -31,9 +31,15 @@ $whatsapp_url = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $what
             if ( has_custom_logo() ) {
                 $custom_logo_id = get_theme_mod( 'custom_logo' );
                 $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-                echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="block transition-transform duration-300 hover:scale-105">';
-                echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" style="max-height: 90px; width: auto; object-fit: contain;">';
-                echo '</a>';
+                if ( is_array( $logo ) ) {
+                    echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="block transition-transform duration-300 hover:scale-105">';
+                    echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" style="max-height: 90px; width: auto; object-fit: contain;">';
+                    echo '</a>';
+                } else {
+                    echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl lg:text-3xl font-bold text-bella-text tracking-wide transition-colors hover:text-bella-terracotta">';
+                    bloginfo( 'name' );
+                    echo '</a>';
+                }
             } else {
                 echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="font-serif text-2xl lg:text-3xl font-bold text-bella-text tracking-wide transition-colors hover:text-bella-terracotta">';
                 bloginfo( 'name' );
