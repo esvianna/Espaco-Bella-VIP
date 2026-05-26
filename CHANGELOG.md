@@ -2,12 +2,14 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
-## [1.2.6] - Correção Definitiva do Customizer (Conflito Elementor) - 2026-05-26
+## [1.2.6] - Correção do Customizer (Elementor) e Nova Cor de Fundo - 2026-05-26
 ### Fixed
-- **Causa raiz diagnosticada:** O WordPress disparava avisos PHP do tipo `_doing_it_wrong()` durante a checagem de capacidades (`map_meta_cap`) de itens de menu antigos associados ao tipo de post `elementor_library` (que não estava registrado por estar o Elementor inativo). Esses avisos imprimiam tags HTML de `Notice` no meio do bloco de script inline JS de `_wpCustomizeSettings`, corrompendo-o e travando a tela com `SyntaxError: Unexpected token '<'`.
-- Criado fallback no `functions.php` que registra temporariamente o post type `elementor_library` se inativo para silenciar o aviso durante o carregamento.
-- Implementado desligamento automático da exibição de erros na tela (`display_errors = 0`) para requisições do Customizer e Admin no `functions.php`.
-- Removido o script de diagnóstico do tema Bella VIP e gerado o ZIP final limpo de produção `bella-vip.zip`.
+- **Causa raiz do Customizer corrigida:** Solucionado o aviso PHP `_doing_it_wrong()` de capacidade do post type `elementor_library` inativo, registrando-o como fallback no `functions.php` e forçando `display_errors = 0` no Admin/Customizer.
+- Removido o script de diagnóstico do tema Bella VIP.
+
+### Changed
+- Atualizado o tom padrão da cor de fundo (nude) do tema para **`#ebe2dc`** (cinza-areia quente) no `customizer.php` e nos arquivos de placeholders SVG, garantindo excelente contraste tridimensional dos cartões brancos e harmonia com as fotos reais do salão.
+- Reempacotado o `bella-vip.zip` com todas as melhorias.
 
 ## [1.2.5] - Correção Raiz: HTML literal nos defaults do Customizer - 2026-05-26
 ### Fixed

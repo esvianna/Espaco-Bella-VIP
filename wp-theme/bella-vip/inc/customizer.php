@@ -51,9 +51,8 @@ function bellavip_customize_register( $wp_customize ) {
 		'settings' => 'bellavip_color_terracotta',
 	) ) );
 
-	// Cor Nude
 	$wp_customize->add_setting( 'bellavip_color_nude', array(
-		'default'           => '#fdf7f3',
+		'default'           => '#ebe2dc',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bellavip_color_nude', array(
@@ -737,7 +736,7 @@ add_action( 'customize_register', 'bellavip_customize_register' );
  */
 function bellavip_customizer_css() {
 	$terracotta = get_theme_mod( 'bellavip_color_terracotta', '#df9a81' );
-	$nude       = get_theme_mod( 'bellavip_color_nude', '#fdf7f3' );
+	$nude       = get_theme_mod( 'bellavip_color_nude', '#ebe2dc' );
 
 	$css = "
 		:root {
