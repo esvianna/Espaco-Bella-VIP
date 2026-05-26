@@ -12,8 +12,8 @@ function bellavip_customize_register( $wp_customize ) {
 
 	// Seção Geral Bella VIP (Existente)
 	$wp_customize->add_section( 'bellavip_settings', array(
-		'title'       => esc_html__( 'Configurações Bella VIP', 'bellavip' ),
-		'description' => esc_html__( 'Personalize as cores principais e os contatos do tema.', 'bellavip' ),
+		'title'       => esc_html__( 'Configurações Bella VIP', 'bella-vip' ),
+		'description' => esc_html__( 'Personalize as cores principais e os contatos do tema.', 'bella-vip' ),
 		'priority'    => 30,
 	) );
 
@@ -23,8 +23,8 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_whatsapp_number', array(
-		'label'       => esc_html__( 'Número do WhatsApp', 'bellavip' ),
-		'description' => esc_html__( 'Apenas números (Ex: 5541999999999)', 'bellavip' ),
+		'label'       => esc_html__( 'Número do WhatsApp', 'bella-vip' ),
+		'description' => esc_html__( 'Apenas números (Ex: 5541999999999)', 'bella-vip' ),
 		'section'     => 'bellavip_settings',
 		'type'        => 'text',
 	) );
@@ -35,7 +35,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_address', array(
-		'label'       => esc_html__( 'Endereço (Rodapé)', 'bellavip' ),
+		'label'       => esc_html__( 'Endereço (Rodapé)', 'bella-vip' ),
 		'section'     => 'bellavip_settings',
 		'type'        => 'textarea',
 	) );
@@ -46,7 +46,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bellavip_color_terracotta', array(
-		'label'    => esc_html__( 'Cor Principal (Terracotta)', 'bellavip' ),
+		'label'    => esc_html__( 'Cor Principal (Terracotta)', 'bella-vip' ),
 		'section'  => 'bellavip_settings',
 		'settings' => 'bellavip_color_terracotta',
 	) ) );
@@ -57,7 +57,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bellavip_color_nude', array(
-		'label'    => esc_html__( 'Cor de Fundo (Nude)', 'bellavip' ),
+		'label'    => esc_html__( 'Cor de Fundo (Nude)', 'bella-vip' ),
 		'section'  => 'bellavip_settings',
 		'settings' => 'bellavip_color_nude',
 	) ) );
@@ -66,14 +66,14 @@ function bellavip_customize_register( $wp_customize ) {
 	// PAINEL DA PÁGINA INICIAL
 	// ----------------------------------------------------
 	$wp_customize->add_panel( 'bellavip_homepage_panel', array(
-		'title'       => esc_html__( 'Página Inicial Bella VIP', 'bellavip' ),
-		'description' => esc_html__( 'Personalize todas as seções da Landing Page.', 'bellavip' ),
+		'title'       => esc_html__( 'Página Inicial Bella VIP', 'bella-vip' ),
+		'description' => esc_html__( 'Personalize todas as seções da Landing Page.', 'bella-vip' ),
 		'priority'    => 31,
 	) );
 
 	// SEÇÃO HERO
 	$wp_customize->add_section( 'bellavip_home_hero', array(
-		'title'    => esc_html__( 'Hero - Banner Principal', 'bellavip' ),
+		'title'    => esc_html__( 'Hero - Banner Principal', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 10,
 	) );
@@ -83,7 +83,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_hero_tagline', array(
-		'label'   => esc_html__( 'Tagline / Localização', 'bellavip' ),
+		'label'   => esc_html__( 'Tagline / Localização', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 		'type'    => 'text',
 	) );
@@ -93,7 +93,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_hero_title', array(
-		'label'   => esc_html__( 'Título Principal (aceita HTML como <br>)', 'bellavip' ),
+		'label'   => esc_html__( 'Título Principal (aceita HTML como <br>)', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 		'type'    => 'text',
 	) );
@@ -103,7 +103,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_hero_description', array(
-		'label'   => esc_html__( 'Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 		'type'    => 'textarea',
 	) );
@@ -113,7 +113,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_hero_btn_text', array(
-		'label'   => esc_html__( 'Texto do Botão', 'bellavip' ),
+		'label'   => esc_html__( 'Texto do Botão', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 		'type'    => 'text',
 	) );
@@ -123,24 +123,24 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_hero_btn_url', array(
-		'label'   => esc_html__( 'Link do Botão', 'bellavip' ),
+		'label'   => esc_html__( 'Link do Botão', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 		'type'    => 'text',
 	) );
 
 	$wp_customize->add_setting( 'bellavip_hero_image', array(
-		'default'           => 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_hero_image', array(
-		'label'   => esc_html__( 'Imagem Lateral', 'bellavip' ),
+		'label'   => esc_html__( 'Imagem Lateral', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 	) ) );
 
 
 	// SEÇÃO SERVIÇOS
 	$wp_customize->add_section( 'bellavip_home_services', array(
-		'title'    => esc_html__( 'Serviços', 'bellavip' ),
+		'title'    => esc_html__( 'Serviços', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 20,
 	) );
@@ -150,7 +150,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_services_title', array(
-		'label'   => esc_html__( 'Título da Seção', 'bellavip' ),
+		'label'   => esc_html__( 'Título da Seção', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'text',
 	) );
@@ -160,7 +160,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_services_subtitle', array(
-		'label'   => esc_html__( 'Subtítulo da Seção', 'bellavip' ),
+		'label'   => esc_html__( 'Subtítulo da Seção', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'textarea',
 	) );
@@ -171,7 +171,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_service1_title', array(
-		'label'   => esc_html__( 'Serviço 1: Nome', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 1: Nome', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'text',
 	) );
@@ -181,17 +181,17 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_service1_desc', array(
-		'label'   => esc_html__( 'Serviço 1: Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 1: Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'textarea',
 	) );
 
 	$wp_customize->add_setting( 'bellavip_service1_image', array(
-		'default'           => 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service1_image', array(
-		'label'   => esc_html__( 'Serviço 1: Imagem', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 1: Imagem', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 	) ) );
 
@@ -201,7 +201,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_service2_title', array(
-		'label'   => esc_html__( 'Serviço 2: Nome', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 2: Nome', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'text',
 	) );
@@ -211,17 +211,17 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_service2_desc', array(
-		'label'   => esc_html__( 'Serviço 2: Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 2: Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'textarea',
 	) );
 
 	$wp_customize->add_setting( 'bellavip_service2_image', array(
-		'default'           => 'https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service2_image', array(
-		'label'   => esc_html__( 'Serviço 2: Imagem', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 2: Imagem', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 	) ) );
 
@@ -231,7 +231,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_service3_title', array(
-		'label'   => esc_html__( 'Serviço 3: Nome', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 3: Nome', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'text',
 	) );
@@ -241,24 +241,24 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_service3_desc', array(
-		'label'   => esc_html__( 'Serviço 3: Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 3: Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 		'type'    => 'textarea',
 	) );
 
 	$wp_customize->add_setting( 'bellavip_service3_image', array(
-		'default'           => 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service3_image', array(
-		'label'   => esc_html__( 'Serviço 3: Imagem', 'bellavip' ),
+		'label'   => esc_html__( 'Serviço 3: Imagem', 'bella-vip' ),
 		'section' => 'bellavip_home_services',
 	) ) );
 
 
 	// SEÇÃO GLOSS EXPRESS
 	$wp_customize->add_section( 'bellavip_home_gloss', array(
-		'title'    => esc_html__( 'Destaque: Gloss Express', 'bellavip' ),
+		'title'    => esc_html__( 'Destaque: Gloss Express', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 30,
 	) );
@@ -268,7 +268,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_tagline', array(
-		'label'   => esc_html__( 'Tagline / Selo', 'bellavip' ),
+		'label'   => esc_html__( 'Tagline / Selo', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
@@ -278,7 +278,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_title', array(
-		'label'   => esc_html__( 'Título de Destaque', 'bellavip' ),
+		'label'   => esc_html__( 'Título de Destaque', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
@@ -288,7 +288,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_description', array(
-		'label'   => esc_html__( 'Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'textarea',
 	) );
@@ -298,7 +298,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_feature1', array(
-		'label'   => esc_html__( 'Benefício 1', 'bellavip' ),
+		'label'   => esc_html__( 'Benefício 1', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
@@ -308,7 +308,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_feature2', array(
-		'label'   => esc_html__( 'Benefício 2', 'bellavip' ),
+		'label'   => esc_html__( 'Benefício 2', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
@@ -318,7 +318,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_feature3', array(
-		'label'   => esc_html__( 'Benefício 3', 'bellavip' ),
+		'label'   => esc_html__( 'Benefício 3', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
@@ -328,7 +328,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_btn_text', array(
-		'label'   => esc_html__( 'Texto do Botão', 'bellavip' ),
+		'label'   => esc_html__( 'Texto do Botão', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
@@ -338,24 +338,24 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gloss_btn_url', array(
-		'label'   => esc_html__( 'Link do Botão', 'bellavip' ),
+		'label'   => esc_html__( 'Link do Botão', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 		'type'    => 'text',
 	) );
 
 	$wp_customize->add_setting( 'bellavip_gloss_image', array(
-		'default'           => 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_gloss_image', array(
-		'label'   => esc_html__( 'Imagem do Destaque', 'bellavip' ),
+		'label'   => esc_html__( 'Imagem do Destaque', 'bella-vip' ),
 		'section' => 'bellavip_home_gloss',
 	) ) );
 
 
 	// SEÇÃO SOBRE
 	$wp_customize->add_section( 'bellavip_home_about', array(
-		'title'    => esc_html__( 'Sobre o Espaço', 'bellavip' ),
+		'title'    => esc_html__( 'Sobre o Espaço', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 40,
 	) );
@@ -365,7 +365,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_title', array(
-		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'label'   => esc_html__( 'Título Principal', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'text',
 	) );
@@ -375,26 +375,26 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_about_description', array(
-		'label'   => esc_html__( 'Descrição Principal', 'bellavip' ),
+		'label'   => esc_html__( 'Descrição Principal', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'textarea',
 	) );
 
 	$wp_customize->add_setting( 'bellavip_about_image1', array(
-		'default'           => 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_about_image1', array(
-		'label'   => esc_html__( 'Imagem Decorativa 1', 'bellavip' ),
+		'label'   => esc_html__( 'Imagem Decorativa 1', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 	) ) );
 
 	$wp_customize->add_setting( 'bellavip_about_image2', array(
-		'default'           => 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_about_image2', array(
-		'label'   => esc_html__( 'Imagem Decorativa 2', 'bellavip' ),
+		'label'   => esc_html__( 'Imagem Decorativa 2', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 	) ) );
 
@@ -404,7 +404,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_feat1_title', array(
-		'label'   => esc_html__( 'Diferencial 1: Título', 'bellavip' ),
+		'label'   => esc_html__( 'Diferencial 1: Título', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'text',
 	) );
@@ -414,7 +414,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_feat1_desc', array(
-		'label'   => esc_html__( 'Diferencial 1: Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Diferencial 1: Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'textarea',
 	) );
@@ -425,7 +425,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_feat2_title', array(
-		'label'   => esc_html__( 'Diferencial 2: Título', 'bellavip' ),
+		'label'   => esc_html__( 'Diferencial 2: Título', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'text',
 	) );
@@ -435,7 +435,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_feat2_desc', array(
-		'label'   => esc_html__( 'Diferencial 2: Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Diferencial 2: Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'textarea',
 	) );
@@ -446,7 +446,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_feat3_title', array(
-		'label'   => esc_html__( 'Diferencial 3: Título', 'bellavip' ),
+		'label'   => esc_html__( 'Diferencial 3: Título', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'text',
 	) );
@@ -456,7 +456,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_about_feat3_desc', array(
-		'label'   => esc_html__( 'Diferencial 3: Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Diferencial 3: Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_about',
 		'type'    => 'textarea',
 	) );
@@ -464,7 +464,7 @@ function bellavip_customize_register( $wp_customize ) {
 
 	// SEÇÃO GALERIA
 	$wp_customize->add_section( 'bellavip_home_gallery', array(
-		'title'    => esc_html__( 'Galeria', 'bellavip' ),
+		'title'    => esc_html__( 'Galeria', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 50,
 	) );
@@ -474,7 +474,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gallery_title', array(
-		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'label'   => esc_html__( 'Título Principal', 'bella-vip' ),
 		'section' => 'bellavip_home_gallery',
 		'type'    => 'text',
 	) );
@@ -484,7 +484,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_gallery_subtitle', array(
-		'label'   => esc_html__( 'Subtítulo', 'bellavip' ),
+		'label'   => esc_html__( 'Subtítulo', 'bella-vip' ),
 		'section' => 'bellavip_home_gallery',
 		'type'    => 'textarea',
 	) );
@@ -492,13 +492,13 @@ function bellavip_customize_register( $wp_customize ) {
 	for ( $i = 1; $i <= 4; $i++ ) {
 		$default_img = '';
 		if ( $i == 1 ) {
-			$default_img = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
 		} elseif ( $i == 2 ) {
-			$default_img = 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
 		} elseif ( $i == 3 ) {
-			$default_img = 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
 		} elseif ( $i == 4 ) {
-			$default_img = 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
 		}
 
 		$wp_customize->add_setting( "bellavip_gallery_img{$i}", array(
@@ -506,7 +506,7 @@ function bellavip_customize_register( $wp_customize ) {
 			'sanitize_callback' => 'esc_url_raw',
 		) );
 		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "bellavip_gallery_img{$i}", array(
-			'label'   => sprintf( esc_html__( 'Imagem %d', 'bellavip' ), $i ),
+			'label'   => sprintf( esc_html__( 'Imagem %d', 'bella-vip' ), $i ),
 			'section' => 'bellavip_home_gallery',
 		) ) );
 	}
@@ -514,7 +514,7 @@ function bellavip_customize_register( $wp_customize ) {
 
 	// SEÇÃO DEPOIMENTOS
 	$wp_customize->add_section( 'bellavip_home_testimonials', array(
-		'title'    => esc_html__( 'Depoimentos', 'bellavip' ),
+		'title'    => esc_html__( 'Depoimentos', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 60,
 	) );
@@ -524,7 +524,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_testimonials_title', array(
-		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'label'   => esc_html__( 'Título Principal', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
@@ -535,7 +535,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test1_text', array(
-		'label'   => esc_html__( 'Depoimento 1: Texto', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 1: Texto', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'textarea',
 	) );
@@ -544,7 +544,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test1_author', array(
-		'label'   => esc_html__( 'Depoimento 1: Nome do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 1: Nome do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
@@ -553,16 +553,16 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test1_info', array(
-		'label'   => esc_html__( 'Depoimento 1: Detalhe do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 1: Detalhe do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
 	$wp_customize->add_setting( 'bellavip_test1_avatar', array(
-		'default'           => 'https://ui-avatars.com/api/?name=Ana+C&background=f4e9e5&color=d18c72',
+		'default'           => get_template_directory_uri() . '/assets/images/avatar-placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_test1_avatar', array(
-		'label'   => esc_html__( 'Depoimento 1: Foto do Autor (100x100 recomendado)', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 1: Foto do Autor (100x100 recomendado)', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 	) ) );
 
@@ -572,7 +572,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test2_text', array(
-		'label'   => esc_html__( 'Depoimento 2: Texto', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 2: Texto', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'textarea',
 	) );
@@ -581,7 +581,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test2_author', array(
-		'label'   => esc_html__( 'Depoimento 2: Nome do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 2: Nome do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
@@ -590,16 +590,16 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test2_info', array(
-		'label'   => esc_html__( 'Depoimento 2: Detalhe do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 2: Detalhe do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
 	$wp_customize->add_setting( 'bellavip_test2_avatar', array(
-		'default'           => 'https://ui-avatars.com/api/?name=Juliana+T&background=f4e9e5&color=d18c72',
+		'default'           => get_template_directory_uri() . '/assets/images/avatar-placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_test2_avatar', array(
-		'label'   => esc_html__( 'Depoimento 2: Foto do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 2: Foto do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 	) ) );
 
@@ -609,7 +609,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test3_text', array(
-		'label'   => esc_html__( 'Depoimento 3: Texto', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 3: Texto', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'textarea',
 	) );
@@ -618,7 +618,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test3_author', array(
-		'label'   => esc_html__( 'Depoimento 3: Nome do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 3: Nome do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
@@ -627,23 +627,23 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_test3_info', array(
-		'label'   => esc_html__( 'Depoimento 3: Detalhe do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 3: Detalhe do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 		'type'    => 'text',
 	) );
 	$wp_customize->add_setting( 'bellavip_test3_avatar', array(
-		'default'           => 'https://ui-avatars.com/api/?name=Mariana+S&background=f4e9e5&color=d18c72',
+		'default'           => get_template_directory_uri() . '/assets/images/avatar-placeholder.svg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_test3_avatar', array(
-		'label'   => esc_html__( 'Depoimento 3: Foto do Autor', 'bellavip' ),
+		'label'   => esc_html__( 'Depoimento 3: Foto do Autor', 'bella-vip' ),
 		'section' => 'bellavip_home_testimonials',
 	) ) );
 
 
 	// SEÇÃO LOCALIZAÇÃO
 	$wp_customize->add_section( 'bellavip_home_location', array(
-		'title'    => esc_html__( 'Localização e Mapa', 'bellavip' ),
+		'title'    => esc_html__( 'Localização e Mapa', 'bella-vip' ),
 		'panel'    => 'bellavip_homepage_panel',
 		'priority' => 70,
 	) );
@@ -653,7 +653,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_location_title', array(
-		'label'   => esc_html__( 'Título Principal', 'bellavip' ),
+		'label'   => esc_html__( 'Título Principal', 'bella-vip' ),
 		'section' => 'bellavip_home_location',
 		'type'    => 'text',
 	) );
@@ -663,7 +663,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_location_description', array(
-		'label'   => esc_html__( 'Descrição', 'bellavip' ),
+		'label'   => esc_html__( 'Descrição', 'bella-vip' ),
 		'section' => 'bellavip_home_location',
 		'type'    => 'textarea',
 	) );
@@ -673,7 +673,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_location_name', array(
-		'label'   => esc_html__( 'Nome do Espaço', 'bellavip' ),
+		'label'   => esc_html__( 'Nome do Espaço', 'bella-vip' ),
 		'section' => 'bellavip_home_location',
 		'type'    => 'text',
 	) );
@@ -683,7 +683,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_location_address', array(
-		'label'       => esc_html__( 'Endereço Completo (aceita HTML)', 'bellavip' ),
+		'label'       => esc_html__( 'Endereço Completo (aceita HTML)', 'bella-vip' ),
 		'section'     => 'bellavip_home_location',
 		'type'        => 'textarea',
 	) );
@@ -693,8 +693,8 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'bellavip_sanitize_iframe',
 	) );
 	$wp_customize->add_control( 'bellavip_location_map_html', array(
-		'label'       => esc_html__( 'Iframe / HTML do Google Maps', 'bellavip' ),
-		'description' => esc_html__( 'Cole o código HTML (<iframe>) gerado pelo Google Maps aqui.', 'bellavip' ),
+		'label'       => esc_html__( 'Iframe / HTML do Google Maps', 'bella-vip' ),
+		'description' => esc_html__( 'Cole o código HTML (<iframe>) gerado pelo Google Maps aqui.', 'bella-vip' ),
 		'section'     => 'bellavip_home_location',
 		'type'        => 'textarea',
 	) );
@@ -704,7 +704,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_location_btn1_text', array(
-		'label'   => esc_html__( 'Botão 1: Texto', 'bellavip' ),
+		'label'   => esc_html__( 'Botão 1: Texto', 'bella-vip' ),
 		'section' => 'bellavip_home_location',
 		'type'    => 'text',
 	) );
@@ -714,7 +714,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_location_btn1_url', array(
-		'label'   => esc_html__( 'Botão 1: Link', 'bellavip' ),
+		'label'   => esc_html__( 'Botão 1: Link', 'bella-vip' ),
 		'section' => 'bellavip_home_location',
 		'type'    => 'text',
 	) );
@@ -724,7 +724,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bellavip_location_btn2_text', array(
-		'label'   => esc_html__( 'Botão 2 (WhatsApp): Texto', 'bellavip' ),
+		'label'   => esc_html__( 'Botão 2 (WhatsApp): Texto', 'bella-vip' ),
 		'section' => 'bellavip_home_location',
 		'type'    => 'text',
 	) );

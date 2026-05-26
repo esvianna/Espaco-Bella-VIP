@@ -31,12 +31,12 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
             }
             ?>
             <p class="text-bella-subtext">
-              <?php esc_html_e( 'Cuidado, beleza e bem-estar para mulheres no coração do Campo Comprido.', 'bellavip' ); ?>
+              <?php esc_html_e( 'Cuidado, beleza e bem-estar para mulheres no coração do Campo Comprido.', 'bella-vip' ); ?>
             </p>
           </div>
 
           <div>
-            <h4 class="font-serif text-lg text-bella-text mb-4"><?php esc_html_e( 'Contato', 'bellavip' ); ?></h4>
+            <h4 class="font-serif text-lg text-bella-text mb-4"><?php esc_html_e( 'Contato', 'bella-vip' ); ?></h4>
             <p class="text-bella-subtext mb-2">WhatsApp: <?php echo esc_html( preg_replace('/^55/', '', $whatsapp_number) ); ?></p>
             <div class="text-bella-subtext mb-4">
                 <?php echo wp_kses_post( $address ); ?>
@@ -48,25 +48,25 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
           </div>
 
           <div>
-            <h4 class="font-serif text-lg text-bella-text mb-4"><?php esc_html_e( 'Pronta para cuidar de você?', 'bellavip' ); ?></h4>
+            <h4 class="font-serif text-lg text-bella-text mb-4"><?php esc_html_e( 'Pronta para cuidar de você?', 'bella-vip' ); ?></h4>
             <p class="text-bella-subtext mb-4">
-              <?php esc_html_e( 'Fale conosco pelo WhatsApp e encontre o melhor horário para seu atendimento.', 'bellavip' ); ?>
+              <?php esc_html_e( 'Fale conosco pelo WhatsApp e encontre o melhor horário para seu atendimento.', 'bella-vip' ); ?>
             </p>
             <a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer" class="btn-primary w-full md:w-auto shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-              <?php esc_html_e( 'Agendar atendimento', 'bellavip' ); ?>
+              <?php esc_html_e( 'Agendar atendimento', 'bella-vip' ); ?>
             </a>
           </div>
 
         </div>
 
         <div class="pt-8 border-t border-bella-rose/20 text-center text-sm text-bella-subtext flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'Todos os direitos reservados.', 'bellavip' ); ?></p>
+          <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'Todos os direitos reservados.', 'bella-vip' ); ?></p>
           <p class="mt-2 md:mt-0">
             <?php 
             printf(
               wp_kses(
                 /* translators: %s: developer link */
-                __( 'Desenvolvido com carinho por %s.', 'bellavip' ),
+                __( 'Desenvolvido com carinho por %s.', 'bella-vip' ),
                 array(
                   'a' => array(
                     'href'   => array(),
@@ -95,7 +95,7 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
         
         <!-- Tooltip que aparece após carregar e no hover -->
         <span class="absolute -top-12 right-0 bg-white text-bella-text text-sm py-2 px-4 rounded-xl shadow-lg border border-bella-nude whitespace-nowrap opacity-0 transition-opacity duration-500 group-hover:opacity-100 font-medium" id="whatsapp-tooltip">
-            <?php esc_html_e( 'Agende seu horário!', 'bellavip' ); ?>
+            <?php esc_html_e( 'Agende seu horário!', 'bella-vip' ); ?>
             <!-- Triângulo da tooltip -->
             <div class="absolute right-6 top-full" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid white;"></div>
         </span>

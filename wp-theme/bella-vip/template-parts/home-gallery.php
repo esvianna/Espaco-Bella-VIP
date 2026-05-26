@@ -9,10 +9,10 @@ $title    = get_theme_mod( 'bellavip_gallery_title', 'Resultados e momentos no E
 $subtitle = get_theme_mod( 'bellavip_gallery_subtitle', 'Um pouquinho do nosso dia a dia e dos resultados que entregamos com tanto amor.' );
 
 $images = array(
-	get_theme_mod( 'bellavip_gallery_img1', 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
-	get_theme_mod( 'bellavip_gallery_img2', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
-	get_theme_mod( 'bellavip_gallery_img3', 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
-	get_theme_mod( 'bellavip_gallery_img4', 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
+	get_theme_mod( 'bellavip_gallery_img1', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
+	get_theme_mod( 'bellavip_gallery_img2', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
+	get_theme_mod( 'bellavip_gallery_img3', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
+	get_theme_mod( 'bellavip_gallery_img4', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
 );
 ?>
 
@@ -33,7 +33,7 @@ $images = array(
 			<?php foreach ( $images as $image ) : ?>
 				<?php if ( ! empty( $image ) ) : ?>
 					<div class="aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
-						<img src="<?php echo esc_url( $image ); ?>" alt="<?php esc_attr_e( 'Galeria de fotos do Espaço Bella VIP', 'bellavip' ); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+						<img src="<?php echo esc_url( $image ); ?>" alt="<?php esc_attr_e( 'Galeria de fotos do Espaço Bella VIP', 'bella-vip' ); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
 					</div>
 				<?php endif; ?>
 			<?php endforeach; ?>

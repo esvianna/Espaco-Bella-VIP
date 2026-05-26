@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100%">
+  <!-- Background circle with theme nude -->
+  <circle cx="50" cy="50" r="48" fill="#fdf7f3" stroke="#e3c0b7" stroke-width="2" />
+  
+  <!-- Stylized minimal avatar profile outline -->
+  <g fill="none" stroke="#df9a81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(10, 10)">
+    <!-- Face outline -->
+    <path d="M 40,48 C 40,55 35,60 30,60 C 25,60 20,55 20,48 C 20,40 25,35 30,35 C 35,35 40,40 40,48 Z" fill="#f4e9e5" />
+    
+    <!-- Hair outline -->
+    <path d="M 18,48 C 18,30 42,30 42,48 C 42,50 40,44 38,42 C 34,39 26,39 22,42 C 20,44 18,50 18,48 Z" fill="#df9a81" />
+    
+    <!-- Body/Shoulders -->
+    <path d="M 10,70 C 15,62 25,60 30,60 C 35,60 45,62 50,70" />
+  </g>
+</svg>

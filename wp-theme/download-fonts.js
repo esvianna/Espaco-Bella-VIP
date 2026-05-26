@@ -5,7 +5,7 @@ const https = require('https');
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 const FONT_URL = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap';
 
-const FONTS_DIR = path.join(__dirname, 'bellavip', 'assets', 'fonts');
+const FONTS_DIR = path.join(__dirname, 'bella-vip', 'assets', 'fonts');
 
 if (!fs.existsSync(FONTS_DIR)) {
   fs.mkdirSync(FONTS_DIR, { recursive: true });

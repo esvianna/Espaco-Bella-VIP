@@ -30,7 +30,15 @@ get_header();
 
             // Fallback genérico para a lista
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class( 'mb-12 border-b border-bella-nude pb-8' ); ?>>
+             <article id="post-<?php the_ID(); ?>" <?php post_class( 'mb-12 border-b border-bella-nude pb-8' ); ?>>
+                <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="post-thumbnail mb-4 rounded-xl overflow-hidden max-w-lg">
+                        <a href="<?php echo esc_url( get_permalink() ); ?>">
+                            <?php the_post_thumbnail( 'medium', array( 'class' => 'w-full h-auto object-cover' ) ); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+
                 <header class="entry-header mb-4">
                     <?php
                     if ( is_singular() ) :
@@ -42,8 +50,24 @@ get_header();
                 </header>
 
                 <div class="entry-content text-bella-subtext">
-                    <?php the_excerpt(); ?>
+                    <?php
+                    the_excerpt();
+
+                    wp_link_pages(
+                        array(
+                            'before' => '<div class="page-links mt-4"><span class="font-medium mr-1">' . esc_html__( 'Páginas:', 'bella-vip' ) . '</span>',
+                            'after'  => '</div>',
+                        )
+                    );
+                    ?>
                 </div>
+
+                <?php if ( has_tag() ) : ?>
+                    <footer class="entry-footer mt-4 text-sm text-bella-subtext">
+                        <span class="font-medium mr-1"><?php esc_html_e( 'Tags:', 'bella-vip' ); ?></span>
+                        <?php the_tags( '', ', ', '' ); ?>
+                    </footer>
+                <?php endif; ?>
             </article>
             <?php
 
@@ -56,7 +80,7 @@ get_header();
         ?>
         <section class="no-results not-found">
             <header class="page-header">
-                <h1 class="page-title text-3xl font-serif text-bella-text"><?php esc_html_e( 'Nenhum conteúdo encontrado.', 'bellavip' ); ?></h1>
+                <h1 class="page-title text-3xl font-serif text-bella-text"><?php esc_html_e( 'Nenhum conteúdo encontrado.', 'bella-vip' ); ?></h1>
             </header>
         </section>
         <?php

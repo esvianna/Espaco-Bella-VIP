@@ -79,8 +79,8 @@ $whatsapp_url    = 'https://wa.me/' . esc_attr( preg_replace( '/[^0-9]/', '', $w
 			<?php else : ?>
 				<div class="text-center p-6 bg-white/80 backdrop-blur-sm rounded-xl m-4 border border-bella-rose/20 max-w-sm">
 					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mx-auto text-bella-terracotta mb-2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-					<p class="text-bella-text font-medium mb-1"><?php esc_html_e( 'Mapa do Google', 'bellavip' ); ?></p>
-					<p class="text-sm text-bella-subtext"><?php esc_html_e( 'Insira o código iframe do Google Maps em "Aparência > Personalizar > Página Inicial Bella VIP > Localização e Mapa" para ativar o mapa aqui.', 'bellavip' ); ?></p>
+					<p class="text-bella-text font-medium mb-1"><?php esc_html_e( 'Mapa do Google', 'bella-vip' ); ?></p>
+					<p class="text-sm text-bella-subtext"><?php esc_html_e( 'Insira o código iframe do Google Maps em "Aparência > Personalizar > Página Inicial Bella VIP > Localização e Mapa" para ativar o mapa aqui.', 'bella-vip' ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>

@@ -7,8 +7,8 @@
 
 $title    = get_theme_mod( 'bellavip_about_title', 'Um espaço pensado para cuidar de você' );
 $desc     = get_theme_mod( 'bellavip_about_description', 'No Espaço Bella VIP, cada atendimento é feito com atenção, carinho e cuidado aos detalhes. Oferecemos serviços de cabelo, Gloss Express, massagens e cuidados de beleza para mulheres que desejam se sentir bem, bonitas e confiantes.' );
-$image1   = get_theme_mod( 'bellavip_about_image1', 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' );
-$image2   = get_theme_mod( 'bellavip_about_image2', 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' );
+$image1   = get_theme_mod( 'bellavip_about_image1', get_template_directory_uri() . '/assets/images/placeholder.svg' );
+$image2   = get_theme_mod( 'bellavip_about_image2', get_template_directory_uri() . '/assets/images/placeholder.svg' );
 
 $features = array(
 	array(
@@ -35,10 +35,10 @@ $features = array(
 		<div class="w-full lg:w-1/2">
 			<div class="grid grid-cols-2 gap-4">
 				<?php if ( ! empty( $image1 ) ) : ?>
-					<img src="<?php echo esc_url( $image1 ); ?>" alt="<?php esc_attr_e( 'Detalhe de produtos e ambiente', 'bellavip' ); ?>" class="w-full h-64 object-cover rounded-2xl rounded-tr-[4rem]" loading="lazy" />
+					<img src="<?php echo esc_url( $image1 ); ?>" alt="<?php esc_attr_e( 'Detalhe de produtos e ambiente', 'bella-vip' ); ?>" class="w-full h-64 object-cover rounded-2xl rounded-tr-[4rem]" loading="lazy" />
 				<?php endif; ?>
 				<?php if ( ! empty( $image2 ) ) : ?>
-					<img src="<?php echo esc_url( $image2 ); ?>" alt="<?php esc_attr_e( 'Cliente relaxando', 'bellavip' ); ?>" class="w-full h-64 object-cover rounded-2xl rounded-bl-[4rem] mt-8" loading="lazy" />
+					<img src="<?php echo esc_url( $image2 ); ?>" alt="<?php esc_attr_e( 'Cliente relaxando', 'bella-vip' ); ?>" class="w-full h-64 object-cover rounded-2xl rounded-bl-[4rem] mt-8" loading="lazy" />
 				<?php endif; ?>
 			</div>
 		</div>
