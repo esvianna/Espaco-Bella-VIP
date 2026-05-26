@@ -3,6 +3,7 @@
 ## 📍 Onde Paramos
 - Migramos a arquitetura da Home do WordPress (`front-page.php`) de Padrões de Bloco (Gutenberg) para uma estrutura 100% controlada pelo Customizer (Opção B), tornando a atualização de todo o conteúdo simples e à prova de falhas para usuários leigos.
 - Criamos novos arquivos em `template-parts/home-*.php` para cada seção e registramos todos os campos no Customizer em um painel unificado "Página Inicial Bella VIP".
+- Reestruturamos o ambiente de build: os arquivos de desenvolvimento (`node_modules/`, `package.json`, `package-lock.json` e `src/`) foram movidos para a pasta pai `/wp-theme/`, deixando a pasta do tema `./wp-theme/bella-vip-theme/` 100% limpa com arquivos estritamente de produção.
 - Limpamos arquivos obsoletos do diretório do tema (`acf-export.json` e a pasta `patterns/`) e geramos um arquivo `.zip` de produção otimizado (~726 KB, redução de 89% em relação ao zip anterior).
 - Finalizamos o desenvolvimento do protótipo de alta fidelidade em React + Vite + Tailwind CSS v4.
 

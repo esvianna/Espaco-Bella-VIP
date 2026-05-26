@@ -2,13 +2,15 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
-## [1.2.1] - Limpeza de Arquivos Obsoletos e Otimização do Zip - 2026-05-26
+## [1.2.1] - Limpeza de Arquivos Obsoletos e Reestruturação de Desenvolvimento - 2026-05-26
 ### Removed
 - Exclusão do arquivo obsoleto `acf-export.json` na raiz do tema.
 - Exclusão da pasta `patterns/` e de seu registro em `functions.php` (Gutenberg Block Patterns inativos).
 
 ### Changed
-- Otimização do processo de geração do arquivo `bella-vip-theme.zip` para excluir arquivos de desenvolvimento local (`node_modules/`, `package.json`, `package-lock.json` e `src/`), reduzindo o tamanho do arquivo final de 6.5 MB para ~726 KB (redução de 89%).
+- Reestruturação do ambiente de desenvolvimento: movidos `node_modules/`, `package.json`, `package-lock.json` e `src/` para fora da pasta do tema, mantendo-os na pasta pai `/wp-theme/`.
+- O tema `./wp-theme/bella-vip-theme/` agora contém estritamente os arquivos que devem subir para produção.
+- Geração do arquivo `bella-vip-theme.zip` diretamente do diretório limpo do tema, reduzindo o tamanho de 6.5 MB para ~726 KB.
 
 ## [1.2.0] - Home 100% Controlável pelo Customizer (Sem Gutenberg) - 2026-05-26
 ### Added
