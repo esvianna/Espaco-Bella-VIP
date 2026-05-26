@@ -4,12 +4,17 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ## [1.2.2] - Correções, Self-hosting de Fontes e Preparação para WordPress.org - 2026-05-26
 ### Added
-- Baixadas as fontes Google Fonts (Inter e Playfair Display) localmente para a pasta `bellavip/assets/fonts/` e configuradas via `@font-face` no Tailwind CSS, eliminando chamadas externas e atendendo aos requisitos estritos de privacidade do WordPress.org.
+- Baixadas as fontes Google Fonts (Inter e Playfair Display) localmente para a pasta `bella-vip/assets/fonts/` e configuradas via `@font-face` no Tailwind CSS, eliminando chamadas externas.
+- Criados arquivos de template obrigatórios para conformidade: `single.php`, `page.php`, `comments.php` e `sidebar.php` (com chamada `dynamic_sidebar`).
+- Adicionados suportes do tema obrigatórios e recomendados em `functions.php` (Gutenberg, layout, feeds, etc.) e registrado padrão de bloco (`register_block_pattern`).
+- Criados placeholders de imagens SVG locais (`placeholder.svg`, `avatar-placeholder.svg`) para substituir recursos remotos.
 
 ### Fixed
 - Substituída a sanitização `wp_kses_post` do campo de Mapa no Customizer por uma função personalizada `bellavip_sanitize_iframe` para permitir que tags `<iframe>` com atributos seguros sejam salvas corretamente no banco de dados.
-- Corrigidas as URLs padrão de placeholder do Unsplash para as imagens 2 e 4 na seção Galeria, que estavam com links corrompidos (retornando erro de renderização).
+- Corrigidas as URLs padrão de placeholder do Unsplash e UI Avatars em todo o tema, substituindo-as por imagens locais licenciadas GPL e eliminando referências externas (incompatíveis com as regras do WordPress.org).
+- Renomeada a pasta física do tema para `bella-vip` e atualizados Text Domain de todos os arquivos para `bella-vip` (slug oficial do WordPress.org).
 - Alterados os créditos de desenvolvimento no rodapé do tema para "Desenvolvido com carinho por VTIS", direcionando para vtis.com.br.
+- Recortada e otimizada a imagem `screenshot.png` para a proporção exata de 4:3 (1200x900px) e salva como PNG de 8 bits comprimido, reduzindo o arquivo de 1.3 MB para 311 KB.
 
 ## [1.2.1] - Limpeza de Arquivos Obsoletos e Reestruturação de Desenvolvimento - 2026-05-26
 ### Removed
