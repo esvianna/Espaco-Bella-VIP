@@ -9,6 +9,7 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 ### Fixed
 - Simplificado e exposto o registro de padrão de bloco (`register_block_pattern`) em `functions.php` para garantir a detecção correta pelo analisador estático do Theme Check.
 - Modificado o link estático de crédito da VTIS no rodapé (`footer.php`) para construção dinâmica e segura via PHP, eliminando o alerta de link estático.
+- Removidos os suportes legados e não utilizados de `custom-header` e `custom-background` no `functions.php` para corrigir o bug de tela em branco na inicialização da página de personalização.
 - Reempacotado o tema atualizado no arquivo `bella-vip.zip` para distribuição.
 
 ## [1.2.2] - Correções, Self-hosting de Fontes e Preparação para WordPress.org - 2026-05-26

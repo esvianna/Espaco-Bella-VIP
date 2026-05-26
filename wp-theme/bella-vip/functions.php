@@ -61,10 +61,6 @@ function bellavip_setup() {
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'align-wide' );
 
-	// Suporte a cabeçalho e fundos personalizados
-	add_theme_support( 'custom-header' );
-	add_theme_support( 'custom-background' );
-
 	// Adiciona estilos para o editor Gutenberg
 	add_editor_style( 'assets/css/output.css' );
 }
