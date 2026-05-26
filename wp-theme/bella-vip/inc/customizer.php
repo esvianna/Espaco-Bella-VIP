@@ -31,8 +31,8 @@ function bellavip_customize_register( $wp_customize ) {
 
 	// Endereço
 	$wp_customize->add_setting( 'bellavip_address', array(
-		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido&#10;Curitiba - PR',
-		'sanitize_callback' => 'wp_kses_post',
+		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido, Curitiba - PR',
+		'sanitize_callback' => 'sanitize_textarea_field',
 	) );
 	$wp_customize->add_control( 'bellavip_address', array(
 		'label'       => esc_html__( 'Endereço (Rodapé)', 'bella-vip' ),
@@ -678,11 +678,11 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_location_address', array(
-		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido&#10;Curitiba - PR',
-		'sanitize_callback' => 'wp_kses_post',
+		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido, Curitiba - PR',
+		'sanitize_callback' => 'sanitize_textarea_field',
 	) );
 	$wp_customize->add_control( 'bellavip_location_address', array(
-		'label'       => esc_html__( 'Endereço Completo (aceita HTML)', 'bella-vip' ),
+		'label'       => esc_html__( 'Endereço Completo', 'bella-vip' ),
 		'section'     => 'bellavip_home_location',
 		'type'        => 'textarea',
 	) );
@@ -766,4 +766,23 @@ function bellavip_sanitize_iframe( $input ) {
 			'frameborder'     => true,
 		),
 	) );
+}
+/**
+ * Sanitiza campos de endereço, permitindo apenas HTML simples de formatação de texto (br, strong, em).
+ * Função wrapper nomeada exigida pelo Theme Check para compatibilidade com o WordPress.org.
+ *
+ * @param string $input O valor de entrada do campo de endereço.
+ * @return string O valor sanitizado.
+ */
+function bellavip_sanitize_address( $input ) {
+	$allowed_html = array(
+		'br'     => array(),
+		'strong' => array(),
+		'em'     => array(),
+		'span'   => array(
+			'class' => true,
+			'style' => true,
+		),
+	);
+	return wp_kses( $input, $allowed_html );
 }

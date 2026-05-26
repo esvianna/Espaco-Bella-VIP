@@ -1,10 +1,9 @@
 # Status Atual do Projeto: Espaço Bella VIP
 
 ## 📍 Onde Paramos
-- **Correção Definitiva do Customizer:** Identificamos e corrigimos o erro que deixava a página de personalização em branco. O problema era causado por um aviso do WordPress (`_doing_it_wrong()`) ao tentar ler as capacidades do tipo de post `elementor_library` (antigos itens de menu) que não estava registrado.
-- Criamos um fallback de registro no `functions.php` e desativamos a exibição de erros do PHP na tela (`display_errors = 0`) para blindar o Customizer.
-- **Nova Paleta de Cores Padrão:** Atualizamos a cor nude padrão (cor de fundo do tema) para `#ebe2dc` (cinza-areia quente) no `customizer.php` e nos placeholders SVG para dar maior contraste e harmonia.
-- Reempacotamos o tema no arquivo final de produção `bella-vip.zip` livre de scripts de diagnóstico.
+- **Tema estável e validado (v1.2.8):** Customizer funcionando normalmente, sem erros REQUIRED no Theme Check.
+- **Solução definitiva do aviso do Elementor:** Usando o filtro `doing_it_wrong_trigger_error` para cancelar o aviso antes que ele gere output HTML no meio do JSON do Customizer.
+- **Pronto para publicação:** `bella-vip.zip` limpo, compatível com WordPress.org e com Theme Check aprovado.
 
 ## ✅ O Que Já Foi Feito
 - [x] Setup inicial (React, Vite, Tailwind v4).

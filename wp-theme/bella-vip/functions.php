@@ -145,37 +145,25 @@ function bellavip_register_block_features() {
 add_action( 'init', 'bellavip_register_block_features' );
 
 /**
- * Corrige o bug de tela branca no Customizer causado por erros/notices PHP de outros plugins.
- * Desativa a exibição de erros na tela durante requisições do Customizer e Admin,
- * evitando que avisos quebrem a sintaxe do JSON JS inline gerado pelo WordPress.
+ * Compatibilidade com plugins legados (ex: Elementor desativado).
+ *
+ * Suprime o aviso _doing_it_wrong() gerado pelo WordPress quando um item de menu
+ * referencia um post type não registrado (como 'elementor_library'). Usa o filtro
+ * nativo `doing_it_wrong_trigger_error` para cancelar o trigger_error() ANTES que
+ * qualquer saída HTML seja gerada, evitando que notices corrompam o JSON do Customizer.
+ *
+ * Esta é a abordagem correta e compatível com WordPress.org (sem ini_set, sem register_post_type).
+ *
+ * @param bool   $trigger       Se deve disparar o erro.
+ * @param string $function_name Nome da função que gerou o aviso.
+ * @param string $message       Mensagem do aviso.
+ * @param string $version       Versão do WP em que foi adicionado.
+ * @return bool False para suprimir, true para permitir.
  */
-function bellavip_silence_customizer_errors() {
-	if ( is_customize_preview() || is_admin() ) {
-		@ini_set( 'display_errors', 0 );
+function bellavip_suppress_unregistered_post_type_notice( $trigger, $function_name, $message, $version ) {
+	if ( 'map_meta_cap' === $function_name && false !== strpos( $message, 'elementor_library' ) ) {
+		return false;
 	}
+	return $trigger;
 }
-add_action( 'init', 'bellavip_silence_customizer_errors', 1 );
-
-/**
- * Fallback de compatibilidade: Registra temporariamente o post type 'elementor_library'
- * se o Elementor estiver desativado. Isso evita que o WordPress gere avisos do tipo
- * _doing_it_wrong() na checagem de capacidades de itens de menu antigos que apontavam
- * para modelos do Elementor, prevenindo o corrompimento da tela de personalização.
- */
-function bellavip_register_elementor_library_fallback() {
-	if ( ! post_type_exists( 'elementor_library' ) ) {
-		register_post_type( 'elementor_library', array(
-			'public'             => false,
-			'publicly_queryable' => false,
-			'show_ui'            => false,
-			'show_in_menu'       => false,
-			'query_var'          => false,
-			'rewrite'            => false,
-			'capability_type'    => 'post',
-			'has_archive'        => false,
-			'hierarchical'       => false,
-			'supports'           => array( 'title' ),
-		) );
-	}
-}
-add_action( 'init', 'bellavip_register_elementor_library_fallback', 5 );
+add_filter( 'doing_it_wrong_trigger_error', 'bellavip_suppress_unregistered_post_type_notice', 10, 4 );
