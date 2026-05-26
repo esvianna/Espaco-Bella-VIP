@@ -65,10 +65,7 @@ function bellavip_scripts() {
 	// CSS Principal do Tema (para requisitos do WP)
 	wp_enqueue_style( 'bellavip-style', get_stylesheet_uri(), array(), BELLA_VIP_VERSION );
 
-	// Fontes do Google
-	wp_enqueue_style( 'bellavip-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap', array(), null );
-
-    // Script global (Navegação mobile, WhatsApp, etc)
+	// Script global (Navegação mobile, WhatsApp, etc)
     wp_enqueue_script( 'bellavip-main', get_template_directory_uri() . '/assets/js/main.js', array(), filemtime( get_template_directory() . '/assets/js/main.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'bellavip_scripts' );

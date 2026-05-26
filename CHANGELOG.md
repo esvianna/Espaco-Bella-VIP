@@ -2,7 +2,10 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
-## [1.2.2] - Correção do Iframe do Mapa, URLs da Galeria e Créditos - 2026-05-26
+## [1.2.2] - Correções, Self-hosting de Fontes e Preparação para WordPress.org - 2026-05-26
+### Added
+- Baixadas as fontes Google Fonts (Inter e Playfair Display) localmente para a pasta `bellavip/assets/fonts/` e configuradas via `@font-face` no Tailwind CSS, eliminando chamadas externas e atendendo aos requisitos estritos de privacidade do WordPress.org.
+
 ### Fixed
 - Substituída a sanitização `wp_kses_post` do campo de Mapa no Customizer por uma função personalizada `bellavip_sanitize_iframe` para permitir que tags `<iframe>` com atributos seguros sejam salvas corretamente no banco de dados.
 - Corrigidas as URLs padrão de placeholder do Unsplash para as imagens 2 e 4 na seção Galeria, que estavam com links corrompidos (retornando erro de renderização).
@@ -15,8 +18,8 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ### Changed
 - Reestruturação do ambiente de desenvolvimento: movidos `node_modules/`, `package.json`, `package-lock.json` e `src/` para fora da pasta do tema, mantendo-os na pasta pai `/wp-theme/`.
-- O tema `./wp-theme/bella-vip-theme/` agora contém estritamente os arquivos que devem subir para produção.
-- Geração do arquivo `bella-vip-theme.zip` diretamente do diretório limpo do tema, reduzindo o tamanho de 6.5 MB para ~726 KB.
+- O tema `./wp-theme/bellavip/` agora contém estritamente os arquivos que devem subir para produção.
+- Geração do arquivo `bellavip.zip` diretamente do diretório limpo do tema, reduzindo o tamanho de 6.5 MB para ~726 KB.
 
 ## [1.2.0] - Home 100% Controlável pelo Customizer (Sem Gutenberg) - 2026-05-26
 ### Added

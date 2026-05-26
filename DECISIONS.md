@@ -19,3 +19,10 @@ Este documento registra as principais decisões arquiteturais e técnicas tomada
 **Contexto:** Bugs de quebra de renderização relacionados à biblioteca `lucide-react` com ícones específicos não exportados.
 **Decisão:** Remoção temporária de ícones de redes sociais para evitar bloqueio e adoção de ícones base (ou texto).
 **Consequência:** O código fica mais estável. Para o WP/Elementor, serão usados os ícones em SVG nativos do builder.
+
+## 004. Hospedagem Local de Google Fonts (Self-hosting)
+**Data:** 2026-05-26
+**Contexto:** O diretório de temas oficial do WordPress.org proíbe estritamente o carregamento remoto de qualquer recurso externo por motivos de privacidade/GDPR, o que impedia a inclusão do tema se as fontes fossem carregadas da API do Google Fonts.
+**Decisão:** Baixar os arquivos `.woff2` das fontes Inter e Playfair Display, adicioná-los localmente à pasta de ativos (`assets/fonts/`), declará-los via `@font-face` no Tailwind CSS e remover o enfileiramento remoto em `functions.php`.
+**Consequência:** O tema agora atende integralmente às exigências de conformidade do WordPress.org e regulamentos como GDPR/LGPD, além de carregar mais rápido, reduzindo a latência da conexão externa com os servidores do Google.
+

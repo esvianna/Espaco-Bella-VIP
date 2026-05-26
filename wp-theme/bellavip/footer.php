@@ -101,24 +101,7 @@ $address = get_theme_mod('bellavip_address', 'R. Eduardo Sprada, 0000 - Campo Co
         </span>
     </a>
 
-    <!-- Script para animar a Tooltip automaticamente -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const tooltip = document.getElementById('whatsapp-tooltip');
-                if(tooltip) {
-                    tooltip.classList.remove('opacity-0');
-                    tooltip.classList.add('opacity-100');
-                    
-                    // Esconde de volta após 4 segundos se o usuário não passar o mouse
-                    setTimeout(function() {
-                        tooltip.classList.remove('opacity-100');
-                        tooltip.classList.add('opacity-0');
-                    }, 4000);
-                }
-            }, 3000);
-        });
-    </script>
+
 
 </div><!-- #page -->
 
