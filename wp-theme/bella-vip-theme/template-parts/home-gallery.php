@@ -10,9 +10,9 @@ $subtitle = get_theme_mod( 'bellavip_gallery_subtitle', 'Um pouquinho do nosso d
 
 $images = array(
 	get_theme_mod( 'bellavip_gallery_img1', 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
-	get_theme_mod( 'bellavip_gallery_img2', 'https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
+	get_theme_mod( 'bellavip_gallery_img2', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
 	get_theme_mod( 'bellavip_gallery_img3', 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
-	get_theme_mod( 'bellavip_gallery_img4', 'https://images.unsplash.com/photo-1516975080661-46904d9c49d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
+	get_theme_mod( 'bellavip_gallery_img4', 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' ),
 );
 ?>
 

@@ -494,11 +494,11 @@ function bellavip_customize_register( $wp_customize ) {
 		if ( $i == 1 ) {
 			$default_img = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
 		} elseif ( $i == 2 ) {
-			$default_img = 'https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+			$default_img = 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
 		} elseif ( $i == 3 ) {
 			$default_img = 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
 		} elseif ( $i == 4 ) {
-			$default_img = 'https://images.unsplash.com/photo-1516975080661-46904d9c49d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+			$default_img = 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
 		}
 
 		$wp_customize->add_setting( "bellavip_gallery_img{$i}", array(
@@ -690,7 +690,7 @@ function bellavip_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'bellavip_location_map_html', array(
 		'default'           => '',
-		'sanitize_callback' => 'wp_kses_post',
+		'sanitize_callback' => 'bellavip_sanitize_iframe',
 	) );
 	$wp_customize->add_control( 'bellavip_location_map_html', array(
 		'label'       => esc_html__( 'Iframe / HTML do Google Maps', 'bellavip' ),
@@ -749,3 +749,22 @@ function bellavip_customizer_css() {
 	wp_add_inline_style( 'bellavip-style', wp_strip_all_tags( $css ) );
 }
 add_action( 'wp_enqueue_scripts', 'bellavip_customizer_css' );
+
+/**
+ * Sanitiza o HTML do iframe do Google Maps, permitindo apenas tags <iframe> com atributos seguros.
+ */
+function bellavip_sanitize_iframe( $input ) {
+	return wp_kses( $input, array(
+		'iframe' => array(
+			'src'             => true,
+			'width'           => true,
+			'height'          => true,
+			'style'           => true,
+			'allowfullscreen' => true,
+			'loading'         => true,
+			'referrerpolicy'  => true,
+			'class'           => true,
+			'frameborder'     => true,
+		),
+	) );
+}

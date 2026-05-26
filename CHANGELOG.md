@@ -2,6 +2,11 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.2] - Correção do Iframe do Mapa e URLs da Galeria - 2026-05-26
+### Fixed
+- Substituída a sanitização `wp_kses_post` do campo de Mapa no Customizer por uma função personalizada `bellavip_sanitize_iframe` para permitir que tags `<iframe>` com atributos seguros sejam salvas corretamente no banco de dados.
+- Corrigidas as URLs padrão de placeholder do Unsplash para as imagens 2 e 4 na seção Galeria, que estavam com links corrompidos (retornando erro de renderização).
+
 ## [1.2.1] - Limpeza de Arquivos Obsoletos e Reestruturação de Desenvolvimento - 2026-05-26
 ### Removed
 - Exclusão do arquivo obsoleto `acf-export.json` na raiz do tema.
