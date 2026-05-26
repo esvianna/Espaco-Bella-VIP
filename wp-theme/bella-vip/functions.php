@@ -5,10 +5,7 @@
  * @package Bella_VIP
  */
 
-// Temporarily enable error display for debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 if ( ! defined( 'BELLA_VIP_VERSION' ) ) {
 	// Substitua pela versão do tema definida no style.css

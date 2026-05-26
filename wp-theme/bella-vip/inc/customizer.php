@@ -31,7 +31,7 @@ function bellavip_customize_register( $wp_customize ) {
 
 	// Endereço
 	$wp_customize->add_setting( 'bellavip_address', array(
-		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido<br>Curitiba - PR',
+		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido&#10;Curitiba - PR',
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_address', array(
@@ -93,7 +93,7 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_hero_title', array(
-		'label'   => esc_html__( 'Título Principal (aceita HTML como <br>)', 'bella-vip' ),
+		'label'   => esc_html__( 'Título Principal (aceita HTML)', 'bella-vip' ),
 		'section' => 'bellavip_home_hero',
 		'type'    => 'text',
 	) );
@@ -679,7 +679,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_location_address', array(
-		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido<br>Curitiba - PR',
+		'default'           => 'R. Eduardo Sprada, 0000 - Campo Comprido&#10;Curitiba - PR',
 		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'bellavip_location_address', array(
@@ -693,8 +693,8 @@ function bellavip_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'bellavip_sanitize_iframe',
 	) );
 	$wp_customize->add_control( 'bellavip_location_map_html', array(
-		'label'       => esc_html__( 'Iframe / HTML do Google Maps', 'bella-vip' ),
-		'description' => esc_html__( 'Cole o código HTML (<iframe>) gerado pelo Google Maps aqui.', 'bella-vip' ),
+		'label'       => esc_html__( 'Iframe do Google Maps', 'bella-vip' ),
+		'description' => esc_html__( 'Cole o código iframe gerado pelo Google Maps aqui.', 'bella-vip' ),
 		'section'     => 'bellavip_home_location',
 		'type'        => 'textarea',
 	) );

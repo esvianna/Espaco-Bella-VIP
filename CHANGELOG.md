@@ -2,6 +2,19 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.5] - Correção Raiz: HTML literal nos defaults do Customizer - 2026-05-26
+### Fixed
+- **Causa raiz identificada:** valores `default` dos settings `bellavip_address` e `bellavip_location_address` continham `<br>` literal (HTML cru) que era serializado diretamente no JSON inline gerado pelo `WP_Customize_Manager::customize_pane_settings`. O WordPress não escapa `<` para `\u003c` ao gerar esse JSON, e o WordPress 7.0 parece ser mais estrito nessa serialização, corrompendo o script inline e causando `Uncaught SyntaxError: Unexpected token '<'`.
+- Substituídos os `<br>` nos defaults por `&#10;` (quebra de linha HTML segura para JSON).
+- Removido o `<br>` do label do controle `bellavip_hero_title`.
+- Removido o `<iframe>` da description do controle `bellavip_location_map_html`.
+- Reempacotado o `bella-vip.zip`.
+
+## [1.2.4] - Correção Crítica: Tela Branca no Customizer - 2026-05-26
+### Fixed
+- Removidas as linhas de debug `ini_set('display_errors', 1)` do `functions.php`. Elas injetavam HTML de erros/avisos do PHP diretamente no JSON serializado pelo `WP_Customize_Manager`, corrompendo-o e causando o erro `Uncaught SyntaxError: Unexpected token '<'` que deixava a página de personalização completamente em branco.
+- Reempacotado o `bella-vip.zip` com a correção aplicada.
+
 ## [1.2.3] - Resolução de Avisos Finais do Theme Check - 2026-05-26
 ### Added
 - Implementado registro de estilo de bloco personalizado (`register_block_style`) para o botão nativo do WordPress.
