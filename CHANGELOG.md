@@ -2,6 +2,25 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.10] - Convenção de Subdomínios por Produto - 2026-05-26
+### Changed
+- **Padrão de URL dos demos revisado:** o demo principal do Bella VIP migrou de `demo.vtis.com.br/bella-vip` (sub-pasta) para `bella-vip.vtis.com.br` (subdomínio dedicado).
+- Adotada a convenção **`{produto-slug}.vtis.com.br`** para todos os demos ao vivo do ecossistema VTIS (temas, plugins futuros e produtos correlatos).
+- `docs/bella-vip-theme-page-brief.md` atualizado em todas as ocorrências (hero, CTAs, galeria, assets, checklist DoD e próximos passos) para refletir o novo padrão.
+- `DECISIONS.md` ADR 007 revisada para apontar para o novo endereço `bella-vip.vtis.com.br`.
+
+### Added
+- **DECISIONS.md ADR 009 — Convenção de subdomínios por produto:** formalizada a regra `{produto-slug}.vtis.com.br`, mapa de subdomínios reservados (`app`, `docs`, `status`), pré-requisitos operacionais (DNS wildcard + SSL wildcard via Let's Encrypt DNS-01, isolamento por instalação) e casos especiais para plugins.
+- Itens novos em `PROJECT_STATUS.md`:
+  - Configuração de DNS wildcard `*.vtis.com.br` + certificado SSL wildcard (pré-requisito).
+  - Provisionamento do subdomínio `bella-vip.vtis.com.br`.
+
+### Rationale
+- Isolamento total de cookies/sessões entre demos diferentes.
+- Branding na URL (cada produto vira identidade compartilhável).
+- Reset/restore trivial e independente por produto.
+- Escalabilidade horizontal a custo marginal próximo de zero (mesmo servidor, novos vhosts).
+
 ## [1.2.9] - Briefing da Página de Produto (Theme URI) - 2026-05-26
 ### Added
 - Criado `docs/bella-vip-theme-page-brief.md`: documento de handoff completo para a construção da página `vtis.com.br/temas/bella-vip` no repositório do site institucional VTIS.
@@ -10,7 +29,7 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
 ### Decisões registradas (ver `DECISIONS.md` itens 006 a 008)
 - Hub `/temas/` via CPT `tema` no WordPress (estrutura escalável para futuros temas e plugins VTIS).
-- Demo híbrida: principal em `demo.vtis.com.br/bella-vip` + secundária no WordPress Playground.
+- Demo híbrida: principal em `bella-vip.vtis.com.br` + secundária no WordPress Playground. *(endereço atualizado em [1.2.10])*
 - SEO técnico completo (Schema, OG, sitemap).
 - Sem versão Pro / sem bloco Free vs Pro.
 

@@ -42,9 +42,10 @@ Este documento registra as principais decisões arquiteturais e técnicas tomada
 
 ## 007. Demo híbrida — subdomínio próprio + WordPress Playground
 **Data:** 2026-05-26
+**Revisado em:** 2026-05-26 (substituído `demo.vtis.com.br/bella-vip` por `bella-vip.vtis.com.br` — ver ADR 009)
 **Contexto:** A regra do WordPress.org exige um demo público acessível durante a revisão manual, e o tema precisa transmitir o resultado visual final (fotos reais, depoimentos, identidade visual completa) logo no primeiro clique. O WordPress Playground (já referenciado no ticket) carrega o tema "vazio" e não cumpre esse papel, mas é excelente como playground técnico zero-instalação.
 **Decisão:** Operar **dois demos em paralelo**:
-1. **Principal:** `demo.vtis.com.br/bella-vip` — instalação WordPress real, com dados reais (fotos, depoimentos, WhatsApp da VTIS). Será o CTA primário da página de produto.
+1. **Principal:** `bella-vip.vtis.com.br` — instalação WordPress real, com dados reais (fotos, depoimentos, WhatsApp da VTIS). Será o CTA primário da página de produto.
 2. **Secundário:** WordPress Playground (link já no ticket) — CTA "Testar sem instalar", focado em usuários técnicos.
 **Consequência:** Cobertura completa entre conversão (Principal) e exploração técnica (Playground), além de redundância caso um dos dois fique indisponível durante a revisão manual.
 
@@ -53,4 +54,33 @@ Este documento registra as principais decisões arquiteturais e técnicas tomada
 **Contexto:** Definição de escopo para a página `vtis.com.br/temas/bella-vip`. Algumas páginas de tema do mercado contêm um bloco comparativo "Free vs Pro" que prepara o usuário para um upsell pago.
 **Decisão:** O Bella VIP é GPL gratuito e **não terá** versão Pro no horizonte próximo. A página de produto **não conterá** bloco "Free vs Pro" nem qualquer CTA de upsell. SEO técnico completo (Schema.org `SoftwareApplication`, OpenGraph, sitemap) será implementado para maximizar descobrimento orgânico.
 **Consequência:** Página mais limpa, alinhada às diretrizes de "no upsell agressivo" do WordPress.org, e menor risco de fricção na revisão manual do ticket #273950.
+
+## 009. Convenção de subdomínios por produto (`{produto-slug}.vtis.com.br`)
+**Data:** 2026-05-26
+**Contexto:** A ADR 007 original definiu o demo do Bella VIP em `demo.vtis.com.br/bella-vip` (sub-pasta sob um subdomínio único). Ao planejar a escalabilidade para futuros temas e plugins da VTIS, identificamos quatro limitações dessa abordagem:
+1. **Cookies/sessão compartilhados:** logar como admin em um demo vaza a sessão para os demais sob o mesmo subdomínio.
+2. **Risco de conflito de plugins** entre demos co-hospedados na mesma instalação WordPress (ou de regras de rewrite quando em sub-pastas separadas).
+3. **Branding fraco na URL:** `demo.vtis.com.br/bella-vip` não comunica o produto; já `bella-vip.vtis.com.br` vira identidade compartilhável.
+4. **Reset/restore acoplado:** corrigir ou recriar um demo bagunçado afeta a estrutura compartilhada.
+
+**Decisão:** Adotar a convenção **`{produto-slug}.vtis.com.br`** para todos os demos ao vivo do ecossistema VTIS. O mesmo `slug` é usado em quatro lugares: (a) WordPress.org, (b) CPT `tema`/`plugin` do site institucional, (c) URL da página de produto em `vtis.com.br/temas/{slug}/` ou `/plugins/{slug}/`, (d) subdomínio do demo.
+
+Mapa de subdomínios reservados:
+- `{tema-slug}.vtis.com.br` — demos de temas WordPress (ex: `bella-vip.vtis.com.br`).
+- `{plugin-slug}.vtis.com.br` — demos de plugins WordPress (futuros).
+- `app.vtis.com.br` — SaaS interno (futuro).
+- `docs.vtis.com.br` — documentação (futuro).
+- `status.vtis.com.br` — status page (futuro).
+
+Pré-requisitos operacionais:
+- **DNS wildcard** `*.vtis.com.br` apontando para o servidor de demos (registro `A` ou `CNAME`).
+- **Certificado SSL wildcard** `*.vtis.com.br` emitido via Let's Encrypt usando desafio **DNS-01** (HTTP-01 não cobre wildcards).
+- **Isolamento por instalação:** cada subdomínio = 1 vhost + 1 banco de dados + 1 instalação WordPress independente (não usar Multisite, exceto para casos justificados).
+- **Automação (futuro):** script `provision-demo.sh {slug}` para criar vhost, banco, instalar WP, ativar tema/plugin e importar dump de demo.
+
+**Casos especiais:**
+- Plugins que dependem de tema base rodam dentro do demo do tema (ex: plugin que estende o Bella VIP rodaria em `bella-vip.vtis.com.br` já pré-instalado).
+- Plugins independentes ganham seu próprio subdomínio com tema padrão (ex: Twenty Twenty-Five).
+
+**Consequência:** Estrutura escalável a custo marginal próximo de zero (mesmo servidor, apenas novos vhosts), com isolamento técnico forte, branding consistente e operação repetível. A ADR 007 foi revisada para refletir o novo endereço do demo principal do Bella VIP.
 

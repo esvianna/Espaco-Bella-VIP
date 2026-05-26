@@ -42,8 +42,9 @@ A página deve:
 | Repositório | Separado do projeto "Espaço Bella VIP" | `vtis.com.br` já existe em outro repo |
 | Estrutura de URL | Hub `/temas/` + páginas filhas | Reaproveitar para futuros temas/plugins |
 | Versão Pro | **Não existe** — não incluir bloco "Free vs Pro" | Apenas versão GPL gratuita por enquanto |
-| Demo principal | `demo.vtis.com.br/bella-vip` (subdomínio próprio) | Controle de dados, fotos reais |
+| Demo principal | `bella-vip.vtis.com.br` (subdomínio dedicado por produto) | Isolamento total, branding na URL, escalável para futuros temas/plugins |
 | Demo secundário | WordPress Playground (link já no ticket) | Bônus para usuários técnicos |
+| Convenção de subdomínios | `{produto-slug}.vtis.com.br` para todos os demos | Ver `DECISIONS.md` ADR 009 |
 | SEO técnico | Sim — Schema.org, OpenGraph, sitemap | Item explicitamente solicitado |
 | Idioma | PT-BR | Público brasileiro |
 | Identidade visual | Paleta do tema (`#ebe2dc` nude, terracota, branco quente) + fontes Inter + Playfair Display | Coerência com o produto |
@@ -64,19 +65,30 @@ Atenção: o descumprimento de qualquer item abaixo pode **bloquear o ticket #27
 
 ---
 
-## 4. Arquitetura de URLs (hub /temas/)
+## 4. Arquitetura de URLs (hub /temas/ + subdomínios por produto)
 
-Como a VTIS terá futuros temas e plugins, a estrutura precisa ser escalável desde o início.
+Como a VTIS terá futuros temas e plugins, a estrutura precisa ser escalável desde o início. Adotamos **dois eixos**:
+
+- **Páginas institucionais e de produto** ficam em `vtis.com.br/temas/...` e `vtis.com.br/plugins/...`.
+- **Demos ao vivo** ficam em **subdomínios dedicados por produto**: `{produto-slug}.vtis.com.br`.
 
 ```text
-vtis.com.br/
-├── temas/                    ← hub (listagem de todos os temas)
-│   ├── bella-vip/            ← página individual (esta)
-│   └── [futuros]/
-├── plugins/                  ← reservar slug para o futuro
-└── demo.vtis.com.br/         ← subdomínio para demos hospedadas
-    └── bella-vip/
+vtis.com.br                       ← site institucional (PRINCIPAL)
+├── /temas/                       ← hub de listagem
+│   ├── /temas/bella-vip/         ← PÁGINA DE PRODUTO (esta)
+│   └── /temas/{futuros}/
+├── /plugins/                     ← hub de listagem (futuro)
+└── /plugins/{slug}/              ← PÁGINA DE PRODUTO de plugin (futuro)
+
+bella-vip.vtis.com.br             ← DEMO LIVE do tema Bella VIP
+{tema-slug}.vtis.com.br           ← DEMO LIVE de cada tema futuro
+{plugin-slug}.vtis.com.br         ← DEMO LIVE de cada plugin futuro
+app.vtis.com.br                   ← reservar para SaaS interno (futuro)
+docs.vtis.com.br                  ← reservar para documentação (futuro)
+status.vtis.com.br                ← reservar para status page (futuro)
 ```
+
+**Regra de ouro:** o slug do produto vira o subdomínio. O mesmo slug é usado no WordPress.org, no CPT `tema`, na página de produto e no demo. Ver `DECISIONS.md` ADR 009.
 
 ### Tipo de conteúdo no WordPress
 
@@ -112,7 +124,7 @@ vtis.com.br/
 - H1: `Bella VIP`
 - Subtítulo: `Um tema elegante para salões de beleza, clínicas de estética e spas — com agendamento por WhatsApp e Customizer nativo do WordPress.`
 - CTAs:
-  - **PRIMÁRIO**: `Ver demonstração ao vivo` → `https://demo.vtis.com.br/bella-vip` (`target="_blank" rel="noopener"`)
+  - **PRIMÁRIO**: `Ver demonstração ao vivo` → `https://bella-vip.vtis.com.br` (`target="_blank" rel="noopener"`)
   - **SECUNDÁRIO**: `Baixar no WordPress.org` → `https://wordpress.org/themes/bella-vip/` (`target="_blank" rel="noopener"`)
 - Linha de social proof: `★ Compatível com WordPress 6.0+ · GPL · Versão 1.2.3`
 
@@ -127,7 +139,7 @@ vtis.com.br/
 - Mostrar usuário editando "Página Inicial Bella VIP" no painel do WordPress e o preview atualizando ao lado em tempo real.
 - Legenda: **"Sem page builder. Sem código. Tudo no Customizer nativo."**
 - Dois links abaixo do vídeo:
-  - `Abrir demo ao vivo` → `https://demo.vtis.com.br/bella-vip`
+  - `Abrir demo ao vivo` → `https://bella-vip.vtis.com.br`
   - `Testar no WordPress Playground` → link do Playground (mesmo do ticket)
 
 ### 5.3 Features (grid 3×2)
@@ -351,10 +363,10 @@ add_action( 'init', function () {
 - [ ] **Mockup do hero** — render do Bella VIP em MacBook + iPhone (Photoshop/Figma).
 - [ ] **Vídeo do Customizer** — 15-30s, MP4 + WebM + poster JPG.
 - [ ] **OG image** — 1200×630, com mockup + nome + tagline.
-- [ ] **Screenshots das 7 seções** — exportar de `demo.vtis.com.br/bella-vip` em 1440×900 ou 1920×1200.
+- [ ] **Screenshots das 7 seções** — exportar de `bella-vip.vtis.com.br` em 1440×900 ou 1920×1200.
 - [ ] **Ícones das features** — escolher set único (lucide ou heroicons), exportar em SVG.
 - [ ] **Fotos das 3 personas** — banco de imagens com licença comercial OU fotos reais do salão cliente.
-- [ ] **Demo hospedada** — subir o tema em `demo.vtis.com.br/bella-vip` e popular com dados reais (fotos do salão, depoimentos plausíveis, número WhatsApp da VTIS para demonstração).
+- [ ] **Demo hospedada** — provisionar o subdomínio `bella-vip.vtis.com.br` (vhost + DB + WP install + tema instalado) e popular com dados reais (fotos do salão, depoimentos plausíveis, número WhatsApp da VTIS para demonstração).
 
 ---
 
@@ -375,7 +387,9 @@ add_action( 'init', function () {
 - [ ] OpenGraph testado em [opengraph.xyz](https://opengraph.xyz)
 - [ ] Lighthouse > 90 em todas as métricas
 - [ ] Responsivo (testar 320px, 768px, 1024px, 1440px)
-- [ ] Demo `demo.vtis.com.br/bella-vip` no ar e estável
+- [ ] Demo `bella-vip.vtis.com.br` no ar e estável
+- [ ] Certificado SSL wildcard `*.vtis.com.br` emitido (Let's Encrypt DNS-01) e instalado no servidor
+- [ ] Registro DNS `bella-vip.vtis.com.br` resolvendo para o servidor de demos
 
 ### Compliance com WordPress.org
 
@@ -396,12 +410,13 @@ add_action( 'init', function () {
 ## 10. Próximos passos
 
 1. Validar este briefing internamente.
-2. Provisionar o subdomínio `demo.vtis.com.br` e instalar o tema lá.
-3. Criar o CPT `tema` no tema institucional da VTIS.
-4. Implementar templates `single-tema.php` e `archive-tema.php`.
-5. Produzir os assets visuais (mockup, vídeo, OG image).
-6. Popular o conteúdo do Bella VIP via CPT.
-7. Lançar, testar, ajustar e comentar no ticket #273950 com a URL definitiva.
+2. Configurar wildcard DNS `*.vtis.com.br` e emitir certificado SSL wildcard (Let's Encrypt DNS-01).
+3. Provisionar o subdomínio `bella-vip.vtis.com.br` (vhost + DB + WP install + tema Bella VIP instalado e populado com dados reais).
+4. Criar o CPT `tema` no tema institucional da VTIS.
+5. Implementar templates `single-tema.php` e `archive-tema.php`.
+6. Produzir os assets visuais (mockup, vídeo, OG image).
+7. Popular o conteúdo do Bella VIP via CPT.
+8. Lançar, testar, ajustar e comentar no ticket #273950 com a URL definitiva.
 
 ---
 
@@ -409,9 +424,11 @@ add_action( 'init', function () {
 
 1. **Inconsistência de versão entre tema e site:** o tema submetido no ticket é a **1.2.3**, mas internamente já estamos na **1.2.8**. A página de produto deve refletir a **versão pública (1.2.3)** até o revisor aprovar e publicarmos uma versão nova.
 
-2. **Playground já está no ticket:** o WordPress.org já vai mostrar esse link na ficha do tema. Logo, na página VTIS o Playground vira só "bônus" — o demo principal continua sendo o próprio (`demo.vtis.com.br/bella-vip`).
+2. **Playground já está no ticket:** o WordPress.org já vai mostrar esse link na ficha do tema. Logo, na página VTIS o Playground vira só "bônus" — o demo principal continua sendo o próprio (`bella-vip.vtis.com.br`).
 
-3. **Provisionar `demo.vtis.com.br` o quanto antes:** o revisor manual do ticket pode entrar a qualquer momento. Se o link `vtis.com.br/temas/bella-vip` (declarado como Theme URI) der 404 ou apontar para uma página vazia, **isso pode ser motivo de bloqueio** do ticket. Priorize colocar pelo menos uma versão mínima da página no ar para garantir que o ticket não trave por isso.
+3. **Provisionar `bella-vip.vtis.com.br` o quanto antes:** o revisor manual do ticket pode entrar a qualquer momento. Se o link `vtis.com.br/temas/bella-vip` (declarado como Theme URI) der 404 ou apontar para uma página vazia, **isso pode ser motivo de bloqueio** do ticket. Priorize colocar pelo menos uma versão mínima da página no ar para garantir que o ticket não trave por isso.
+
+4. **Wildcard SSL é pré-requisito:** como adotamos `{produto-slug}.vtis.com.br` para todos os demos futuros, é essencial emitir um certificado **wildcard `*.vtis.com.br`** via Let's Encrypt usando o desafio **DNS-01** (HTTP-01 não funciona para wildcards). Esse certificado serve para todos os subdomínios atuais e futuros sem retrabalho.
 
 ---
 

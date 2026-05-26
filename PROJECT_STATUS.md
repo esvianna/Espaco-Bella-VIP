@@ -27,15 +27,17 @@
 - Substituição das imagens de placeholder do em tons de Terracota/Nude por fotos reais do espaço pelo usuário via Customizer.
 - Inclusão do iframe real do Google Maps pelo usuário no painel do Customizer.
 - **Construção da página `vtis.com.br/temas/bella-vip`** (executar no repositório do site institucional VTIS, seguindo `docs/bella-vip-theme-page-brief.md`).
-- **Provisionamento do subdomínio `demo.vtis.com.br/bella-vip`** com o tema instalado e populado com dados reais (necessário antes da revisão manual do ticket).
+- **Configuração de DNS wildcard `*.vtis.com.br` + certificado SSL wildcard** (Let's Encrypt DNS-01) — pré-requisito da convenção de subdomínios por produto (ver `DECISIONS.md` ADR 009).
+- **Provisionamento do subdomínio `bella-vip.vtis.com.br`** com o tema instalado e populado com dados reais (necessário antes da revisão manual do ticket).
 - **Acompanhar revisão manual do ticket #273950** e responder ao revisor se questionado sobre os avisos `RECOMMENDED`.
 
 ## 👣 Próximos Passos Lógicos
-1. **Provisionar o subdomínio de demo** (`demo.vtis.com.br`) e instalar o Bella VIP com dados reais — **prioridade alta**, pois o revisor manual pode acessar o Theme URI a qualquer momento.
-2. **Implementar a página `/temas/bella-vip/`** no repositório do `vtis.com.br` seguindo o briefing em `docs/bella-vip-theme-page-brief.md` (criar CPT `tema`, hub `/temas/`, templates, conteúdo e SEO técnico).
-3. **Re-cadastrar o Iframe do Google Maps:** Como o banco de dados anterior limpou o iframe devido à sanitização antiga (`wp_kses_post`), o usuário precisa acessar **Aparência > Personalizar > Página Inicial Bella VIP > Localização e Mapa** e colar o código `<iframe>` do Google Maps novamente e publicar.
-4. **Substituir Imagens:** Enviar as fotos oficiais do salão/clínica através dos respectivos campos de imagens no Customizer.
-5. **Responder o ticket #273950** com a URL definitiva da página de produto assim que ela estiver no ar.
+1. **Configurar DNS wildcard `*.vtis.com.br` e emitir certificado SSL wildcard** via Let's Encrypt (DNS-01) — pré-requisito para todos os subdomínios de demo do ecossistema VTIS.
+2. **Provisionar o subdomínio `bella-vip.vtis.com.br`** (vhost + DB + WP install + tema Bella VIP) com dados reais — **prioridade alta**, pois o revisor manual pode acessar o Theme URI a qualquer momento.
+3. **Implementar a página `/temas/bella-vip/`** no repositório do `vtis.com.br` seguindo o briefing em `docs/bella-vip-theme-page-brief.md` (criar CPT `tema`, hub `/temas/`, templates, conteúdo e SEO técnico).
+4. **Re-cadastrar o Iframe do Google Maps:** Como o banco de dados anterior limpou o iframe devido à sanitização antiga (`wp_kses_post`), o usuário precisa acessar **Aparência > Personalizar > Página Inicial Bella VIP > Localização e Mapa** e colar o código `<iframe>` do Google Maps novamente e publicar.
+5. **Substituir Imagens:** Enviar as fotos oficiais do salão/clínica através dos respectivos campos de imagens no Customizer.
+6. **Responder o ticket #273950** com a URL definitiva da página de produto assim que ela estiver no ar.
 
 ## ⚠️ Riscos ou Decisões Pendentes
 - **Risco de Performance:** Imagens futuras de alta resolução enviadas pelo usuário podem causar lentidão se não otimizadas em WebP antes do upload no WordPress.
