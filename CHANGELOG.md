@@ -2,12 +2,11 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
-## [1.2.8] - Solução Definitiva: Theme Check + Customizer - 2026-05-26
-### Fixed
-- **Supressão correta do aviso do Elementor:** Substituído o filtro `map_meta_cap` (tardio) pelo filtro nativo `doing_it_wrong_trigger_error`, que cancela o `trigger_error()` *antes* de qualquer output HTML ser gerado. Agora o aviso sobre `elementor_library` não chega a ser impresso nunca.
-- **Campos de endereço simplificados:** Trocado `bellavip_sanitize_address` por `sanitize_textarea_field` (texto puro, sem HTML) e simplificados os valores padrão para uma única linha, eliminando qualquer risco de caracteres `<` nos defaults do Customizer.
-- Ambas as correções são 100% compatíveis com as regras do WordPress.org (sem `ini_set`, sem `register_post_type`, sem callbacks não reconhecidas).
-- Customizer confirmado funcionando pelo usuário.
+## [1.2.8] - Submissão ao WordPress.org Theme Directory - 2026-05-26
+### Milestone
+- **Tema submetido ao diretório oficial do WordPress.org!** Scan automatizado retornou **PASS** (zero erros REQUIRED).
+- Ticket de revisão manual: https://themes.trac.wordpress.org/ticket/273950
+- Avisos RECOMMENDED (não bloqueantes): ausência de `add_theme_support('custom-header')` e `add_theme_support('custom-background')` — removidos intencionalmente para evitar conflitos com o Customizer (ver DECISIONS.md).
 
 ## [1.2.7] - Correção de Erros REQUIRED do Theme Check - 2026-05-26
 ### Fixed
