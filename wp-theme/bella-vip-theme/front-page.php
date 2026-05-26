@@ -17,8 +17,14 @@ get_header();
             
             // Verifica se a página está vazia (sem blocos criados pelo usuário)
             if ( empty( get_the_content() ) ) {
-                // Renderiza o Block Pattern de Hero como fallback (Graceful Degradation)
+                // Renderiza todos os Block Patterns em ordem como fallback (Graceful Degradation)
                 echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/hero"} -->' );
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/services"} -->' );
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/gloss-express"} -->' );
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/about"} -->' );
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/gallery"} -->' );
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/testimonials"} -->' );
+                echo do_blocks( '<!-- wp:pattern {"slug":"bellavip/location"} -->' );
                 
                 // Mensagem amigável para o administrador
                 if ( current_user_can( 'edit_posts' ) ) {

@@ -1,6 +1,7 @@
 # Status Atual do Projeto: Espaço Bella VIP
 
 ## 📍 Onde Paramos
+- Corrigimos a renderização da Home do WordPress (`front-page.php`) para carregar todas as seções (Block Patterns) em ordem quando o editor de blocos estiver vazio.
 - Finalizamos o desenvolvimento do protótipo de alta fidelidade em React + Vite + Tailwind CSS v4.
 - A página inicial (Landing Page) está totalmente estruturada com todos os componentes: Header, Hero, Sobre, Serviços, Gloss Express, Galeria, Depoimentos, Localização e Footer.
 - Resolvemos o bug de compilação CSS relacionado à migração do Tailwind v4.

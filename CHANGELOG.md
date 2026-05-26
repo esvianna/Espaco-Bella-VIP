@@ -2,6 +2,10 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.1.1] - Correção do Fallback de Seções na Home - 2026-05-26
+### Fixed
+- Correção em `front-page.php` para exibir todas as seções (Block Patterns) em ordem como fallback caso o conteúdo da página inicial no painel do WordPress esteja vazio.
+
 ## [1.1.0] - Tema WordPress 100% Nativo FSE / WP.org Standards - 2026-05-19
 ### Changed
 - Refatoração profunda da arquitetura do tema Bella VIP.
