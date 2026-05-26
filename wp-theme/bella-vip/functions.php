@@ -144,5 +144,38 @@ function bellavip_register_block_features() {
 }
 add_action( 'init', 'bellavip_register_block_features' );
 
+/**
+ * Corrige o bug de tela branca no Customizer causado por erros/notices PHP de outros plugins.
+ * Desativa a exibição de erros na tela durante requisições do Customizer e Admin,
+ * evitando que avisos quebrem a sintaxe do JSON JS inline gerado pelo WordPress.
+ */
+function bellavip_silence_customizer_errors() {
+	if ( is_customize_preview() || is_admin() ) {
+		@ini_set( 'display_errors', 0 );
+	}
+}
+add_action( 'init', 'bellavip_silence_customizer_errors', 1 );
 
-
+/**
+ * Fallback de compatibilidade: Registra temporariamente o post type 'elementor_library'
+ * se o Elementor estiver desativado. Isso evita que o WordPress gere avisos do tipo
+ * _doing_it_wrong() na checagem de capacidades de itens de menu antigos que apontavam
+ * para modelos do Elementor, prevenindo o corrompimento da tela de personalização.
+ */
+function bellavip_register_elementor_library_fallback() {
+	if ( ! post_type_exists( 'elementor_library' ) ) {
+		register_post_type( 'elementor_library', array(
+			'public'             => false,
+			'publicly_queryable' => false,
+			'show_ui'            => false,
+			'show_in_menu'       => false,
+			'query_var'          => false,
+			'rewrite'            => false,
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'supports'           => array( 'title' ),
+		) );
+	}
+}
+add_action( 'init', 'bellavip_register_elementor_library_fallback', 5 );

@@ -1,12 +1,9 @@
 # Status Atual do Projeto: Espaço Bella VIP
 
 ## 📍 Onde Paramos
-- Corrigimos o salvamento do iframe do Google Maps no Customizer (sanitização personalizada `bellavip_sanitize_iframe` que aceita a tag `<iframe>` com atributos seguros), ajustamos as URLs padrão quebradas na Galeria e inserimos os créditos de desenvolvimento corretos para a VTIS no rodapé.
-- Migramos a arquitetura da Home do WordPress (`front-page.php`) para uma estrutura 100% controlada pelo Customizer (seções em `template-parts/home-*.php` e painel "Página Inicial Bella VIP"), blindando o layout contra erros acidentais de usuários leigos.
-- **Preparação de Conformidade WordPress.org:** Baixamos e configuramos localmente todas as fontes (Inter e Playfair Display) na pasta `bella-vip/assets/fonts/`, removendo chamadas externas e atendendo aos requisitos estritos de privacidade e LGPD/GDPR do diretório do WordPress.
-- **Resolução de Avisos do Theme Check:** Implementamos estilos de blocos (`register_block_style`), padrão de bloco direto (`register_block_pattern`) e convertemos o link do rodapé em dinâmico para evitar falsos positivos de link estático. O arquivo `sidebar.php` com `dynamic_sidebar` está 100% verificado.
-- **Restauração Visual & Correção do Customizer:** Adicionamos 11 imagens autorais elegantes na pasta local de ativos e definimos como fallbacks do tema. Também corrigimos o bug de **tela em branco no Customizer** removendo os suportes legados e não utilizados de `custom-header` e `custom-background` no `functions.php`.
-- **Ambiente de Build e Compactação:** Movemos todos os arquivos de desenvolvimento (`node_modules/`, `package.json`, `package-lock.json` e `src/`) para fora da pasta do tema (`/wp-theme/`), mantendo o diretório do tema `bella-vip/` 100% limpo com arquivos de produção. Geramos o pacote final `bella-vip.zip` pronto para submissão e instalação.
+- **Correção Definitiva do Customizer:** Identificamos e corrigimos o erro que deixava a página de personalização em branco. O problema era causado por um aviso do WordPress (`_doing_it_wrong()`) ao tentar ler as capacidades do tipo de post `elementor_library` (antigos itens de menu) que não estava registrado.
+- Criamos um fallback de registro no `functions.php` e desativamos a exibição de erros do PHP na tela (`display_errors = 0`) para blindar o Customizer.
+- Reempacotamos o tema no arquivo final de produção `bella-vip.zip` livre de scripts de diagnóstico.
 
 ## ✅ O Que Já Foi Feito
 - [x] Setup inicial (React, Vite, Tailwind v4).

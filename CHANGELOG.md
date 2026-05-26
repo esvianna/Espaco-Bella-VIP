@@ -2,6 +2,13 @@
 
 Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 
+## [1.2.6] - Correção Definitiva do Customizer (Conflito Elementor) - 2026-05-26
+### Fixed
+- **Causa raiz diagnosticada:** O WordPress disparava avisos PHP do tipo `_doing_it_wrong()` durante a checagem de capacidades (`map_meta_cap`) de itens de menu antigos associados ao tipo de post `elementor_library` (que não estava registrado por estar o Elementor inativo). Esses avisos imprimiam tags HTML de `Notice` no meio do bloco de script inline JS de `_wpCustomizeSettings`, corrompendo-o e travando a tela com `SyntaxError: Unexpected token '<'`.
+- Criado fallback no `functions.php` que registra temporariamente o post type `elementor_library` se inativo para silenciar o aviso durante o carregamento.
+- Implementado desligamento automático da exibição de erros na tela (`display_errors = 0`) para requisições do Customizer e Admin no `functions.php`.
+- Removido o script de diagnóstico do tema Bella VIP e gerado o ZIP final limpo de produção `bella-vip.zip`.
+
 ## [1.2.5] - Correção Raiz: HTML literal nos defaults do Customizer - 2026-05-26
 ### Fixed
 - **Causa raiz identificada:** valores `default` dos settings `bellavip_address` e `bellavip_location_address` continham `<br>` literal (HTML cru) que era serializado diretamente no JSON inline gerado pelo `WP_Customize_Manager::customize_pane_settings`. O WordPress não escapa `<` para `\u003c` ao gerar esse JSON, e o WordPress 7.0 parece ser mais estrito nessa serialização, corrompendo o script inline e causando `Uncaught SyntaxError: Unexpected token '<'`.
