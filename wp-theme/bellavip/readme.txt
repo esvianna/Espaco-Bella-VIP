@@ -9,29 +9,29 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Copyright (C) 2026 VTIS (https://vtis.com.br)
 
-Tema elegante e minimalista voltado para salões de beleza, clínicas de estética e spas de alto padrão. Oferece uma página inicial totalmente personalizável através do WordPress Customizer (sem a necessidade de page builders complexos).
+An elegant and minimalist theme for beauty salons, aesthetic clinics, and high-end spas. Features a customizable homepage via WordPress Customizer.
 
 == Description ==
 
-Tema premium elegante e minimalista voltado para salões de beleza, clínicas de estética e spas de alto padrão. Oferece uma página inicial totalmente personalizável através do WordPress Customizer (sem a necessidade de page builders complexos), design totalmente responsivo, integração direta com WhatsApp para agendamentos e excelente otimização de performance e SEO.
+An elegant and minimalist WordPress theme tailored for beauty salons, aesthetic clinics, and high-end spas. It features a fully customizable homepage controlled via the native WordPress Customizer (no complex page builders required), a fully responsive layout, direct WhatsApp integration for booking, and exceptional speed and SEO optimization.
 
 == Installation ==
 
-1. No seu painel do WordPress, vá em Aparência > Temas > Adicionar Novo > Carregar Tema.
-2. Escolha o arquivo `bellavip.zip` e clique em Instalar Agora.
-3. Ative o tema.
-4. Vá em Aparência > Personalizar para configurar os textos, imagens, links e mapa.
+1. In your WordPress dashboard, go to Appearance > Themes > Add New > Upload Theme.
+2. Choose the `bellavip.zip` file and click Install Now.
+3. Activate the theme.
+4. Go to Appearance > Customize to configure text, images, links, and map.
 
 == Changelog ==
 
 = 1.2.2 =
-* Ajustes finais de créditos de rodapé, links quebrados da galeria e sanitização de iframes do mapa.
+* Final adjustments for footer credits, gallery broken links, and map iframe sanitization.
 
 = 1.2.1 =
-* Limpeza de arquivos de desenvolvimento e reestruturação do ambiente de build.
+* Cleaned development files and restructured build system.
 
 = 1.2.0 =
-* Implementação da Home 100% controlada pelo Customizer.
+* Implemented homepage controlled 100% via Customizer.
 
 == Resources and Credits ==
 
