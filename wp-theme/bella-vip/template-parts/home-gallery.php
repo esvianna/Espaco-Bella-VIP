@@ -9,10 +9,10 @@ $title    = get_theme_mod( 'bellavip_gallery_title', 'Resultados e momentos no E
 $subtitle = get_theme_mod( 'bellavip_gallery_subtitle', 'Um pouquinho do nosso dia a dia e dos resultados que entregamos com tanto amor.' );
 
 $images = array(
-	get_theme_mod( 'bellavip_gallery_img1', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
-	get_theme_mod( 'bellavip_gallery_img2', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
-	get_theme_mod( 'bellavip_gallery_img3', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
-	get_theme_mod( 'bellavip_gallery_img4', get_template_directory_uri() . '/assets/images/placeholder.svg' ),
+	get_theme_mod( 'bellavip_gallery_img1', get_template_directory_uri() . '/assets/images/gallery-1.jpg' ),
+	get_theme_mod( 'bellavip_gallery_img2', get_template_directory_uri() . '/assets/images/gallery-2.jpg' ),
+	get_theme_mod( 'bellavip_gallery_img3', get_template_directory_uri() . '/assets/images/gallery-3.jpg' ),
+	get_theme_mod( 'bellavip_gallery_img4', get_template_directory_uri() . '/assets/images/gallery-4.jpg' ),
 );
 ?>
 

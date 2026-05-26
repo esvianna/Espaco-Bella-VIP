@@ -7,8 +7,8 @@
 
 $title    = get_theme_mod( 'bellavip_about_title', 'Um espaço pensado para cuidar de você' );
 $desc     = get_theme_mod( 'bellavip_about_description', 'No Espaço Bella VIP, cada atendimento é feito com atenção, carinho e cuidado aos detalhes. Oferecemos serviços de cabelo, Gloss Express, massagens e cuidados de beleza para mulheres que desejam se sentir bem, bonitas e confiantes.' );
-$image1   = get_theme_mod( 'bellavip_about_image1', get_template_directory_uri() . '/assets/images/placeholder.svg' );
-$image2   = get_theme_mod( 'bellavip_about_image2', get_template_directory_uri() . '/assets/images/placeholder.svg' );
+$image1   = get_theme_mod( 'bellavip_about_image1', get_template_directory_uri() . '/assets/images/about-1.jpg' );
+$image2   = get_theme_mod( 'bellavip_about_image2', get_template_directory_uri() . '/assets/images/about-2.jpg' );
 
 $features = array(
 	array(

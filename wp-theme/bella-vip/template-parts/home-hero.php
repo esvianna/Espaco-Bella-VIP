@@ -10,7 +10,7 @@ $title       = get_theme_mod( 'bellavip_hero_title', 'Cabelo, beleza e <br><span
 $description = get_theme_mod( 'bellavip_hero_description', 'Atendimento feminino e personalizado para quem deseja cuidar dos cabelos, relaxar e realçar a autoestima em um ambiente acolhedor.' );
 $btn_text    = get_theme_mod( 'bellavip_hero_btn_text', 'Conhecer serviços' );
 $btn_url     = get_theme_mod( 'bellavip_hero_btn_url', '#servicos' );
-$image       = get_theme_mod( 'bellavip_hero_image', get_template_directory_uri() . '/assets/images/placeholder.svg' );
+$image       = get_theme_mod( 'bellavip_hero_image', get_template_directory_uri() . '/assets/images/hero-default.jpg' );
 ?>
 
 <div class="relative pt-32 pb-20 overflow-hidden bg-bella-white">

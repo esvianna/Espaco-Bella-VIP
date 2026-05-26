@@ -129,7 +129,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_hero_image', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/hero-default.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_hero_image', array(
@@ -187,7 +187,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_service1_image', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/service-cabelo.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service1_image', array(
@@ -217,7 +217,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_service2_image', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/service-cabelo.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service2_image', array(
@@ -247,7 +247,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_service3_image', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/service-massoterapia.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_service3_image', array(
@@ -344,7 +344,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_gloss_image', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/gloss-default.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_gloss_image', array(
@@ -381,7 +381,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'bellavip_about_image1', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/about-1.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_about_image1', array(
@@ -390,7 +390,7 @@ function bellavip_customize_register( $wp_customize ) {
 	) ) );
 
 	$wp_customize->add_setting( 'bellavip_about_image2', array(
-		'default'           => get_template_directory_uri() . '/assets/images/placeholder.svg',
+		'default'           => get_template_directory_uri() . '/assets/images/about-2.jpg',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bellavip_about_image2', array(
@@ -492,13 +492,13 @@ function bellavip_customize_register( $wp_customize ) {
 	for ( $i = 1; $i <= 4; $i++ ) {
 		$default_img = '';
 		if ( $i == 1 ) {
-			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
+			$default_img = get_template_directory_uri() . '/assets/images/gallery-1.jpg';
 		} elseif ( $i == 2 ) {
-			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
+			$default_img = get_template_directory_uri() . '/assets/images/gallery-2.jpg';
 		} elseif ( $i == 3 ) {
-			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
+			$default_img = get_template_directory_uri() . '/assets/images/gallery-3.jpg';
 		} elseif ( $i == 4 ) {
-			$default_img = get_template_directory_uri() . '/assets/images/placeholder.svg';
+			$default_img = get_template_directory_uri() . '/assets/images/gallery-4.jpg';
 		}
 
 		$wp_customize->add_setting( "bellavip_gallery_img{$i}", array(

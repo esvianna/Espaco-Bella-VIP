@@ -13,7 +13,7 @@ $feat2       = get_theme_mod( 'bellavip_gloss_feature2', 'Proporciona brilho esp
 $feat3       = get_theme_mod( 'bellavip_gloss_feature3', 'Manutenção mais fácil e espaçada' );
 $btn_text    = get_theme_mod( 'bellavip_gloss_btn_text', 'Quero saber se serve para meu cabelo' );
 $btn_url     = get_theme_mod( 'bellavip_gloss_btn_url', '#' );
-$image       = get_theme_mod( 'bellavip_gloss_image', get_template_directory_uri() . '/assets/images/placeholder.svg' );
+$image       = get_theme_mod( 'bellavip_gloss_image', get_template_directory_uri() . '/assets/images/gloss-default.jpg' );
 
 // Se o link do botão for '#' redirecionar para o WhatsApp
 if ( $btn_url === '#' || empty( $btn_url ) ) {
