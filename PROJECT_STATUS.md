@@ -1,7 +1,7 @@
 # Status Atual do Projeto: Espaço Bella VIP
 
 ## 📍 Onde Paramos
-- Corrigimos o salvamento do iframe do Google Maps no Customizer (criando uma sanitização personalizada que aceita a tag `<iframe>` com atributos seguros) e ajustamos as URLs padrão quebradas das imagens 2 e 4 na seção Galeria.
+- Corrigimos o salvamento do iframe do Google Maps no Customizer (criando uma sanitização personalizada que aceita a tag `<iframe>` com atributos seguros), ajustamos as URLs padrão quebradas das imagens 2 e 4 na seção Galeria e inserimos os créditos de desenvolvimento corretos para a VTIS no rodapé.
 - Migramos a arquitetura da Home do WordPress (`front-page.php`) de Padrões de Bloco (Gutenberg) para uma estrutura 100% controlada pelo Customizer (Opção B), tornando a atualização de todo o conteúdo simples e à prova de falhas para usuários leigos.
 - Criamos novos arquivos em `template-parts/home-*.php` para cada seção e registramos todos os campos no Customizer em um painel unificado "Página Inicial Bella VIP".
 - Reestruturamos o ambiente de build: os arquivos de desenvolvimento (`node_modules/`, `package.json`, `package-lock.json` e `src/`) foram movidos para a pasta pai `/wp-theme/`, deixando a pasta do tema `./wp-theme/bella-vip-theme/` 100% limpa com arquivos estritamente de produção.

@@ -7,7 +7,7 @@
 
 if ( ! defined( 'BELLA_VIP_VERSION' ) ) {
 	// Substitua pela versão do tema definida no style.css
-	define( 'BELLA_VIP_VERSION', '1.0.0' );
+	define( 'BELLA_VIP_VERSION', '1.2.2' );
 }
 
 /**
